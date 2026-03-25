@@ -369,12 +369,10 @@ Windows immediately prompts the user to change their password before continuing:
 
 The user enters a new permanent password that meets the domain complexity requirements and confirms it.
 
-Windows confirms the change was successful:
-
 <img width="946" height="552" alt="BEN 1O RESET PASSWORD 2" src="https://github.com/user-attachments/assets/9b2f2daa-2104-4a22-a02e-f234fa93b03f" />
 
 
-> *"Your password has been changed."*
+
 
 ---
 
@@ -382,9 +380,9 @@ Windows confirms the change was successful:
 
 Active Directory Domain Services displays a final confirmation dialog:
 
-![AD Password Change Confirmation](AND BEN 1O RESET PASSWORD 2.1.png))
+<img width="1358" height="767" alt="BEN 1O RESET PASSWORD 2 1" src="https://github.com/user-attachments/assets/475411a8-7f88-4172-b895-78c65c00c07f" />
 
-> *"The password for Ben Tenison has been changed."*
+> > *"Your password has been changed."*
 
  **User can now sign in with their new permanent password. Issue fully resolved.**
 
