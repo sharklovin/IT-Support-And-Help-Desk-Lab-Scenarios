@@ -4,25 +4,6 @@
 > **Environment:** Windows Server 2022 + Windows 11 Client (Virtualised)  
 > **Completed:** March 2026
 
----
-
-## Table of Contents
-
-- [Objective](#objective)
-- [Business Scenario](#business-scenario)
-- [Environment & Tools Used](#environment--tools-used)
-- [Lab Architecture](#lab-architecture)
-- [Steps Performed](#steps-performed)
-  - [Phase 1 — Create the Test User](#phase-1--create-the-test-user-in-active-directory)
-  - [Phase 2 — Configure Account Lockout Policy via GPO](#phase-2--configure-account-lockout-policy-via-gpo)
-  - [Phase 3 — Trigger the Account Lockout](#phase-3--trigger-the-account-lockout-on-the-client)
-  - [Phase 4 — Investigate & Resolve on the Domain Controller](#phase-4--investigate--resolve-on-the-domain-controller)
-  - [Phase 5 — Validate the Fix on the Client](#phase-5--validate-the-fix-on-the-client)
-- [Help Desk Ticket Note](#help-desk-ticket-note)
-- [Outcome & Validation](#outcome--validation)
-- [What I Learned](#what-i-learned)
-- [Real World Relevance](#real-world-relevance)
-- [Troubleshooting Reference](#troubleshooting-reference)
 
 ---
 
@@ -406,7 +387,7 @@ ISSUE REPORTED:
 CHECKS PERFORMED:
   1. Opened Active Directory Users and Computers on the DC.
   2. Located user 'Ben Tenison' in the mylab.local > Users container.
-  3. Opened user Properties > Account tab — confirmed account was
+  3. Opened user Properties > Account tab and confirmed account was
      locked out on the domain controller.
   4. Verified GPO Account Lockout Policy: threshold set to 3 invalid
      attempts, confirming lockout was policy-triggered (not a
@@ -417,20 +398,20 @@ ACTION TAKEN:
   2. Set a temporary password: communicated securely to user.
   3. Enabled: "User must change password at next logon."
   4. Enabled: "Unlock the user's account."
-  5. Clicked OK — lockout status confirmed as Unlocked.
-  6. Advised user to sign in with temp password and set new one.
+  5. Clicked OK. Lockout status confirmed as Unlocked.
+  6. Advised user to sign in with temporary password and set new one.
 
 OUTCOME:
   User successfully authenticated with temporary password.
   Forced password change prompt appeared as expected.
-  User set new permanent password — confirmed by AD DS dialog.
+  User set new permanent password as confirmed by AD DS dialog.
   User logged in successfully before their 09:30 AM meeting.
   Ticket resolved. No further escalation required.
 
 FOLLOW-UP NOTES:
   - No signs of brute-force or malicious activity. Human error only.
   - User advised on importance of password management.
-  - No policy changes required; existing lockout thresholds adequate.
+  - No policy changes required as existing lockout thresholds is adequate.
 ──────────────────────────────────────────────────────────────
 ```
 
