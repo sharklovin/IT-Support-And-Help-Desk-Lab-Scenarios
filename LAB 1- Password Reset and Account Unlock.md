@@ -358,6 +358,8 @@ Windows immediately prompts the user to change their password before continuing:
 
 <img width="1364" height="581" alt="BEN 1O RESET PASSWORD 1" src="https://github.com/user-attachments/assets/812f8e51-1ce6-49c1-80ee-d5a869d9b465" />
 
+---
+
 <img width="1324" height="631" alt="BEN 1O RESET PASSWORD 1 1" src="https://github.com/user-attachments/assets/da827127-6fb7-4e44-9241-c43adff1c953" />
 
 
