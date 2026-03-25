@@ -102,7 +102,8 @@ Press the `Windows` key, type **Active Directory**, and select **Active Director
 
 Expand the `mylab.local` domain node in the left panel to see the default containers: Builtin, Computers, Domain Controllers, Users, etc.
 
-![ADUC Domain Structure](Add screen shot 2.png)
+<img width="754" height="530" alt="2" src="https://github.com/user-attachments/assets/60c0751c-94fb-4996-9caa-7676bff278af" />
+
 
 ---
 
@@ -110,7 +111,8 @@ Expand the `mylab.local` domain node in the left panel to see the default contai
 
 Right-click the **Users** container → **New** → **User**.
 
-![Creating a New User Object](add screen shot 3)
+<img width="990" height="614" alt="3" src="https://github.com/user-attachments/assets/c91c5e4f-2130-46f7-ac9f-4a810d7f8934" />
+
 
 ---
 
@@ -127,7 +129,8 @@ Enter the following details in the New Object – User wizard:
 
 Click **Next**.
 
-![User Creation Details](add screen shot 4)
+<img width="444" height="400" alt="4" src="https://github.com/user-attachments/assets/51aa1870-50f7-4858-9a61-c4db7f758e78" />
+
 
 ---
 
@@ -137,7 +140,8 @@ Set an initial password. Leave **"User must change password at next logon"** unc
 
 Click **Next**.
 
-![User Password Options](add screenshot 5)
+)<img width="434" height="376" alt="5" src="https://github.com/user-attachments/assets/1a27e1fa-7284-4a3b-8c33-c5eb6c9cd864" />
+
 
 ---
 
@@ -145,7 +149,8 @@ Click **Next**.
 
 Review the summary screen. Confirm the user `ben10@mylab.local` will be created and click **Finish**.
 
-![User Creation Confirmation](add screen shot 6)
+<img width="439" height="379" alt="6" src="https://github.com/user-attachments/assets/4f6f8e27-32ef-494d-83a5-f2bd3dfe4090" />
+
 
  **User `ben10` (Ben Tenison) has been created in the `mylab.local` domain.**
 
@@ -161,7 +166,8 @@ Review the summary screen. Confirm the user `ben10@mylab.local` will be created 
 
 Press `Windows`, type **Group Policy Management**, and open it.
 
-![Opening Group Policy Management](Add GPO 1 screen shot)
+<img width="756" height="640" alt="GPO1" src="https://github.com/user-attachments/assets/0438059c-ce9e-4daf-adcc-65d7a4fcd3a6" />
+
 
 ---
 
@@ -189,7 +195,9 @@ Computer Configuration
 
 The final configured policy values are shown below:
 
-![GPO Account Lockout Policy Configured](GPO FINALE 1 AND GPO FINALE 2)
+![GPO Account Lockout Policy Configured](GPO FINALE 1 AND GPO FINALE 2)<img width="1021" height="727" alt="GPO FINALE 1" src="https://github.com/user-attachments/assets/50985313-f2ee-40f1-9d5c-198738b3a1a6" /> <img width="1022" height="726" alt="GPO FINALE2" src="https://github.com/user-attachments/assets/1f79cb74-ed80-474b-8eb1-315ed14a1d80" />
+
+
 
 ---
 
@@ -197,7 +205,8 @@ The final configured policy values are shown below:
 
 Double-click **Account lockout threshold** and set it to **3 invalid logon attempts**.
 
-![GPO Lockout Threshold = 3](screenshots/09-gpo-lockout-threshold.png)
+<img width="406" height="496" alt="GPO THRESHOLD" src="https://github.com/user-attachments/assets/69a5c1da-3d96-4354-b05d-9769813fb759" />
+
 
 >  **Why 3?** In a real environment, 5–10 attempts is more user-friendly. We use 3 here to make the lab quick and repeatable.
 
@@ -207,7 +216,8 @@ Double-click **Account lockout threshold** and set it to **3 invalid logon attem
 
 Set the lockout duration to **15 minutes**. This means a locked account auto-unlocks after 15 minutes without admin intervention (useful for lower-priority lockouts).
 
-![GPO Lockout Duration = 15 minutes](screenshots/10-gpo-lockout-duration.png)
+<img width="419" height="502" alt="GPO LOCK OUT DURATION" src="https://github.com/user-attachments/assets/681c75e4-fa80-40ac-94ad-f1f22d0d8cc9" />
+
 
 ---
 
@@ -215,7 +225,8 @@ Set the lockout duration to **15 minutes**. This means a locked account auto-unl
 
 Set the counter reset to **15 minutes**. This resets the failed attempt count if no further failures occur within the window.
 
-![GPO Counter Reset = 15 minutes](screenshots/11-gpo-counter-reset.png)
+<img width="419" height="503" alt="GPO ACCOUNT LOCK OUT COUNTER" src="https://github.com/user-attachments/assets/13591f55-7ae0-4ef7-80ae-8eaaac6abdd2" />
+
 
 ---
 
@@ -223,7 +234,8 @@ Set the counter reset to **15 minutes**. This resets the failed attempt count if
 
 Open **Command Prompt** as Administrator.
 
-![Opening Command Prompt](screenshots/12-open-cmd.png)
+<img width="760" height="639" alt="CMD OPEN" src="https://github.com/user-attachments/assets/2667063b-3139-4efb-a8e1-bf6f59fd6779" />
+
 
 Run the following command to push the new policy to the domain immediately without waiting for the standard refresh cycle:
 
@@ -231,11 +243,13 @@ Run the following command to push the new policy to the domain immediately witho
 gpupdate /force
 ```
 
-![Running gpupdate /force](SCREENSHOT CMD COMMAND)
+<img width="976" height="300" alt="CMD COMMAND" src="https://github.com/user-attachments/assets/9ad1aa97-36f0-49fd-909d-a1e6acbcb455" />
+
 
 The command output confirms the policy refresh is processing:
 
-![gpupdate Output]( SCREEN SHOT cmd UPDATE)
+<img width="1015" height="731" alt="CMD UPDATE" src="https://github.com/user-attachments/assets/6193480c-5b30-4236-bd2d-989245db20ab" />
+
 
  **Account Lockout Policy is now active across the domain.**
 
@@ -253,7 +267,8 @@ On the Windows 11 client, attempt to sign in as `ben10@mylab.local` using an **i
 
 After the 3rd failed attempt, Windows displays the lockout message:
 
-![Account Locked Out on Client](screenshots/15-locked-account-client.png)
+<img width="411" height="537" alt="ACCOUNT LOCK STATE VERIFICATION" src="https://github.com/user-attachments/assets/375a1fc3-4b44-432a-8906-0151d6e8d305" />
+
 
 >  **"The referenced account is currently locked out and may not be logged on to."**  
 > This confirms the GPO lockout threshold of 3 has been triggered. This is exactly what the user would see and report to the help desk.
@@ -272,7 +287,8 @@ After the 3rd failed attempt, Windows displays the lockout message:
 
 Back on the Domain Controller, open **ADUC** and navigate to the **Users** container. Locate **Ben Tenison** in the user list.
 
-![Locating Ben Tenison in ADUC](VALIDATING OF USER SCREENSHOT)
+<img width="848" height="624" alt="VALIDATING OF USER" src="https://github.com/user-attachments/assets/7801232f-069a-4264-b076-8cc9c5ec4b95" />
+
 
 ---
 
@@ -280,7 +296,8 @@ Back on the Domain Controller, open **ADUC** and navigate to the **Users** conta
 
 Right-click **Ben Tenison** → **Properties**.
 
-![Right-click Properties](checking for account state  SCREENSHOT)
+<img width="851" height="626" alt="checking for account state " src="https://github.com/user-attachments/assets/febbb3fb-12d9-4e9b-a031-0d99c74cd342" />
+
 
 Navigate to the **Account** tab. You will see the following message:
 
@@ -288,7 +305,8 @@ Navigate to the **Account** tab. You will see the following message:
 
 The **Unlock account** checkbox is visible, confirming the account is locked.
 
-![Account Lock State in Properties](screenshots ACCOUNT LOCK STATE VERIFICATION.png)
+<img width="411" height="537" alt="ACCOUNT LOCK STATE VERIFICATION" src="https://github.com/user-attachments/assets/259a0dbe-b116-4cc4-be1c-b6e2855fe8e8" />
+
 
 >  **Pro Tip:** The Account tab is where you can also check password expiry options, logon hours, and logon workstation restrictions — all relevant in real-world troubleshooting.
 
@@ -298,7 +316,8 @@ The **Unlock account** checkbox is visible, confirming the account is locked.
 
 Close Properties. Right-click **Ben Tenison** again and select **Reset Password...**.
 
-![Reset Password Context Menu](screenshots/19-reset-password-menu.png)
+<img width="875" height="627" alt="RESET PASSWORD" src="https://github.com/user-attachments/assets/ebe14731-8520-4e1a-b26c-409f8a8cd8a1" />
+
 
 ---
 
@@ -312,7 +331,8 @@ In the Reset Password dialog:
 4.  Check **"Unlock the user's account"**
 5. Click **OK**
 
-![Reset Password Dialog](RESET PASSWORD DONE SCREENSHOT )
+<img width="380" height="257" alt="RESET PASSWORD DONE" src="https://github.com/user-attachments/assets/5504b08d-7b77-47e3-9120-4bfe70ea6fa2" />
+
 
 >  **Security Best Practice:** Always use "User must change password at next logon" when resetting passwords. This ensures the temporary password is never kept as the permanent one and protects against insider threat from the admin knowing the final password.
 
@@ -334,7 +354,10 @@ On the Windows 11 client, sign in as `ben10@mylab.local` using the temporary pas
 
 Windows immediately prompts the user to change their password before continuing:
 
-![Forced Password Change Prompt](screenshots BEN 1O RESET PASSWORD 1 AND BEN 1O RESET PASSWORD 1.1.png)
+<img width="1364" height="581" alt="BEN 1O RESET PASSWORD 1" src="https://github.com/user-attachments/assets/812f8e51-1ce6-49c1-80ee-d5a869d9b465" />
+
+<img width="1324" height="631" alt="BEN 1O RESET PASSWORD 1 1" src="https://github.com/user-attachments/assets/da827127-6fb7-4e44-9241-c43adff1c953" />
+
 
 > *"The user's password must be changed before signing in."*
 
@@ -346,7 +369,8 @@ The user enters a new permanent password that meets the domain complexity requir
 
 Windows confirms the change was successful:
 
-![Password Changed Successfully](SCREENSHOT BEN 1O RESET PASSWORD 2 
+![Password Changed Successfully](SCREENSHOT BEN 1O RESET PASSWORD 2 <img width="946" height="552" alt="BEN 1O RESET PASSWORD 2" src="https://github.com/user-attachments/assets/9b2f2daa-2104-4a22-a02e-f234fa93b03f" />
+
 
 > *"Your password has been changed."*
 
