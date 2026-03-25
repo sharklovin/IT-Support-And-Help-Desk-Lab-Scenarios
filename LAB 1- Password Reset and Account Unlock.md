@@ -144,7 +144,7 @@ Click **Next**.
 
 ---
 
-**Step 1.6 — Confirm and Finish**
+**Step 1.6 - Confirm and Finish**
 
 Review the summary screen. Confirm the user `ben10@mylab.local` will be created and click **Finish**.
 
