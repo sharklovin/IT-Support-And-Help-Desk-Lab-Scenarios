@@ -139,7 +139,7 @@ Set an initial password. Leave **"User must change password at next logon"** unc
 
 Click **Next**.
 
-)<img width="434" height="376" alt="5" src="https://github.com/user-attachments/assets/1a27e1fa-7284-4a3b-8c33-c5eb6c9cd864" />
+<img width="434" height="376" alt="5" src="https://github.com/user-attachments/assets/1a27e1fa-7284-4a3b-8c33-c5eb6c9cd864" />
 
 
 ---
