@@ -270,7 +270,7 @@ On the Windows 11 client, attempt to sign in as `ben10@mylab.local` using an **i
 
 After the 3rd failed attempt, Windows displays the lockout message:
 
-<img width="411" height="537" alt="ACCOUNT LOCK STATE VERIFICATION" src="https://github.com/user-attachments/assets/375a1fc3-4b44-432a-8906-0151d6e8d305" />
+<img width="1321" height="755" alt="LOCKED ACCOUNT STATE" src="https://github.com/user-attachments/assets/b540b94d-1bfc-43d2-8852-37f916ee13db" />
 
 
 >  **"The referenced account is currently locked out and may not be logged on to."**  
