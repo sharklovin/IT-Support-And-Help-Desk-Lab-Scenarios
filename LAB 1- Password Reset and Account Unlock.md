@@ -12,7 +12,6 @@
 - [Business Scenario](#business-scenario)
 - [Environment & Tools Used](#environment--tools-used)
 - [Lab Architecture](#lab-architecture)
-- [Pre-Lab Setup](#pre-lab-setup)
 - [Steps Performed](#steps-performed)
   - [Phase 1 — Create the Test User](#phase-1--create-the-test-user-in-active-directory)
   - [Phase 2 — Configure Account Lockout Policy via GPO](#phase-2--configure-account-lockout-policy-via-gpo)
@@ -52,7 +51,7 @@ This scenario mirrors one of the most common and time-sensitive issues a help de
 | **Domain** | `mylab.local` |
 | **Tool: ADUC** | Active Directory Users and Computers |
 | **Tool: GPMC** | Group Policy Management Console |
-| **Tool: CMD** | Command Prompt (Administrator) — `gpupdate /force` |
+| **Tool: CMD** | Command Prompt (Administrator) - `gpupdate /force` |
 | **Deployment** | Hyper-V / VirtualBox (local lab) |
 
 ---
