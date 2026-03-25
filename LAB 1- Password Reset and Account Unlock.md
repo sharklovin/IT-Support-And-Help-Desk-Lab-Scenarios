@@ -161,16 +161,16 @@ Review the summary screen. Confirm the user `ben10@mylab.local` will be created 
 
 ---
 
-**Step 2.1 — Open Group Policy Management**
+**Step 2.1 - Open Group Policy Management**
 
-Press `Windows`, type **Group Policy Management**, and open it.
+Press `Windows`, type **Group Policy Management** and open it.
 
 <img width="756" height="640" alt="GPO1" src="https://github.com/user-attachments/assets/0438059c-ce9e-4daf-adcc-65d7a4fcd3a6" />
 
 
 ---
 
-**Step 2.2 — Navigate to Account Lockout Policy**
+**Step 2.2 - Navigate to Account Lockout Policy**
 
 In the Group Policy Management console, navigate to:
 
