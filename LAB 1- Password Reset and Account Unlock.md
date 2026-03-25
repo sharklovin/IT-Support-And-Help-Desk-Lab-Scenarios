@@ -97,7 +97,7 @@ Press the `Windows` key, type **Active Directory** and select **Active Directory
 
 ---
 
-**Step 1.2 — Browse the Domain Structure**
+**Step 1.2 - Browse the Domain Structure**
 
 Expand the `mylab.local` domain node in the left panel to see the default containers: Builtin, Computers, Domain Controllers, Users, etc.
 
