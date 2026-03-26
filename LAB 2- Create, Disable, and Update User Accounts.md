@@ -250,9 +250,9 @@ Before assigning the user to a group, the Sales group needs to exist. Right-clic
 
 ---
 
-**Step 5.2 — Configure the Group**
+**Step 5.2 - Configure the Group**
 
-In the New Object – Group dialog, enter the following:
+In the New Object - Group dialog, enter the following:
 
 | Field | Value |
 |---|---|
