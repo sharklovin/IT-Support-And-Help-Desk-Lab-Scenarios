@@ -1,4 +1,4 @@
-# Lab 02: User Account Creation and Management
+# Create, Disable, and Update User Accounts
 
 > **Author:** Nnamso Mkpong
 > 
