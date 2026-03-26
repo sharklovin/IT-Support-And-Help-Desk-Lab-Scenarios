@@ -1,5 +1,4 @@
-# Nnamso Mkpong Help Desk and IT Support Labs
-
+# READ ME
 A practical, hands-on repository documenting 20 real-world Help Desk and IT Support labs built to develop job-ready troubleshooting, user support, system administration, and documentation skills.
 
 Each lab is structured the way real support work is structured in a business scenario, clear objective, tools used, step-by-step actions, screenshots, outcome, and notes. Not theory but Actual work.
