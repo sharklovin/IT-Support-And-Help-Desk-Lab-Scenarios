@@ -186,7 +186,7 @@ Right-click **Hogan Hogan** in the Office Users OU and select **Properties**.
 
 ---
 
-**Step 4.2 — Populate the General Tab**
+**Step 4.2 - Populate the General Tab**
 
 On the **General** tab, fill in the following:
 
@@ -198,7 +198,8 @@ On the **General** tab, fill in the following:
 
 Click **Apply**.
 
-![General tab populated with office, phone, and email](screenshots/10-general-tab-attributes.png)
+<img width="408" height="555" alt="FILL IN GENERAL TAB" src="https://github.com/user-attachments/assets/b8ccf786-c7d3-4a8b-b3e8-3115c3726502" />
+
 
 ---
 
