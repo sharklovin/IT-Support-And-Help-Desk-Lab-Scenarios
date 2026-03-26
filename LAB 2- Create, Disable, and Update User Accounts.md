@@ -1,7 +1,10 @@
 # Lab 02: User Account Creation and Management
 
-> **Domain:** Active Directory Administration | **Level:** Beginner–Intermediate
-> **Environment:** Windows Server 2022 + Active Directory Domain Services
+> **Author:** Nnamso Mkpong
+> 
+> **Domain:** Active Directory Administration
+> 
+> **Environment:** Windows Server 2022 + Windows 11 Client (Virtualised)  
 > **Completed:** March 2026
 
 ---
@@ -62,7 +65,7 @@ mylab.local
 
 ### Phase 1 - Access Active Directory Users and Computers
 
-**Step 1.1 — Open Server Manager**
+**Step 1.1 - Open Server Manager**
 
 Press the `Windows` key, type **Server Manager**, and open it. This is the central administration console on Windows Server from which all AD tools are accessed.
 
