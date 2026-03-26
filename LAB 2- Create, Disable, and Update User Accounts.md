@@ -245,6 +245,8 @@ Before assigning the user to a group, the Sales group needs to exist. Right-clic
 
 <img width="849" height="631" alt="cREATING NEW GROUP" src="https://github.com/user-attachments/assets/bdb0a732-0555-4927-828e-dc8379c1781f" />
 
+> If you already have a custom group like Sales, use that. For this Lab Environment there is no Sales Group exist so the best thing to do is to create a new group first.
+
 
 ---
 
