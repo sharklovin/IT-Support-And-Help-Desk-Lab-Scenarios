@@ -104,9 +104,10 @@ Setting DNS manually to the DC IP before any other step is not optional. It is t
 
 **Step 1.1 — Open DNS Settings and Switch from Automatic to Manual**
 
-Open **Settings → Network and Internet → [Your active adapter] → DNS server assignment** and click **Edit**. The default configuration shows **Automatic (DHCP)**, which pulls DNS from the router. This must be changed to **Manual** before a domain join can succeed.
+Open **Settings → Network and Internet → Ethernet → DNS server assignment** and click **Edit**. The default configuration shows **Automatic (DHCP)**, which pulls DNS from the router. This must be changed to **Manual** before a domain join can succeed.
 
-<img width="500" alt="DNS Settings showing DHCP default" src="screenshots/01-dns-settings-dhcp-vs-manual.png" />
+<img width="322" height="422" alt="changing doman" src="https://github.com/user-attachments/assets/49df47ad-2ebf-44a1-9fb3-3072e8ad2e35" />
+
 
 > The DHCP-assigned DNS typically points to your home router or ISP. Neither of those resolvers knows about `mylab.local`. Switching to Manual gives you direct control over which DNS server the machine queries.
 
