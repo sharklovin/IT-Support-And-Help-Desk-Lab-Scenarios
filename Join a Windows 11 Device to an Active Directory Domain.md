@@ -146,7 +146,7 @@ In the **Computer Name/Domain Changes** dialog:
 
 If DNS is correct and the credentials are accepted, Active Directory processes the join and displays a confirmation:
 
-> *"Welcome to the [DOMAN] domain."*
+> *"Welcome to the [DOMAIN] domain."*
 
 <img width="276" height="153" alt="Confirm the Welcome Dialog" src="https://github.com/user-attachments/assets/ea5abc1f-e159-4ead-b5ae-dddf7514bf67" />
 
