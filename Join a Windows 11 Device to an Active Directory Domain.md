@@ -1,4 +1,4 @@
-# Lab 03: Join a Windows 11 Device to an Active Directory Domain
+# Join a Windows 11 Device to an Active Directory Domain
 
 > **Author:** Nnamso Mkpong
 >
@@ -11,7 +11,7 @@
 
 ## Objective
 
-Join a Windows 11 workstation to an Active Directory domain, verify that a domain user can authenticate on the machine, and confirm that the computer object is visible inside Active Directory Users and Computers.
+Join a Windows 11 workstation to an Active Directory domain, verify that a domain user can authenticate on the machine and confirm that the computer object is visible inside Active Directory Users and Computers.
 
 ---
 
@@ -45,7 +45,7 @@ This scenario covers one of the most routine provisioning tasks in any IT suppor
 mylab.local
 │
 ├── Domain Controllers
-│     └── WIN-SERVER01 (192.168.1.10)
+│     └── WIN-SERVER01 
 │
 ├── Computers
 │     └── WIN11_CLIENT01   ← Computer account created in this lab
@@ -71,7 +71,7 @@ Windows 11 Client
       │
       │  "Where is mylab.local?"
       ▼
-Domain Controller — 192.168.1.10
+Domain Controller 
       │
       │  "Here are the SRV records. LDAP is on port 389. Kerberos on port 88."
       ▼
