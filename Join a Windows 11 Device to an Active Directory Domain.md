@@ -20,7 +20,7 @@ Join a Windows 11 workstation to an Active Directory domain, verify that a domai
 
 > **Ticket #0052 | New Device Provisioning: Domain Join**
 >
-> A new laptop has arrived and must be prepared before the employee's first day. The device is currently in a workgroup and cannot authenticate against the corporate directory. IT support has been asked to join the machine to the **mylab.local** domain, confirm that a domain user can log in successfully, and verify that the computer account has been registered in Active Directory.
+> A new laptop has arrived and must be prepared before the employee's first day. The device is currently in a workgroup and cannot authenticate against the corporate directory. IT support has been asked to join the machine to the **[DOMAIN]** domain, confirm that a domain user can log in successfully, and verify that the computer account has been registered in Active Directory.
 
 This scenario covers one of the most routine provisioning tasks in any IT support role: taking a fresh or reimaged device and bringing it into the domain so the end user can log in with their corporate credentials from day one.
 
