@@ -231,7 +231,8 @@ Right-click **Jayson Sule → Properties → Member Of tab → Add**. Type `Depa
 
 Confirm **Department_Sales** now appears in the Member Of list alongside Domain Users.
 
-<img width="407" height="536" alt="User added to department sales" src="https://github.com/user-attachments/assets/dbe951a8-5847-410c-816a-454e4d310d9b" />
+<img width="407" height="536" alt="Add Jayson Sule to Department_Sales" src="https://github.com/user-attachments/assets/4ca78e98-f214-4ba2-81a3-ab91c03725e9" />
+
 
 
 
