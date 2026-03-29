@@ -138,7 +138,7 @@ ping 192.16*.*.**
 
 <img width="830" height="253" alt="pinging my ip" src="https://github.com/user-attachments/assets/0289c006-bb42-4b43-be53-a0d244c87297" />
 
-> ✅ 4 out of 4 packets returned with sub-1ms response times. The network adapter is active, the IP address is correctly bound to it, and the machine is responding to traffic addressed to its own IP. A failure here with a passing loopback test would indicate the adapter is down or the IP is incorrectly assigned.
+>  4 out of 4 packets returned with sub-1ms response times. The network adapter is active, the IP address is correctly bound to it, and the machine is responding to traffic addressed to its own IP. A failure here with a passing loopback test would indicate the adapter is down or the IP is incorrectly assigned.
 
 ---
 
@@ -151,7 +151,7 @@ ping 192.168.1.1
 <img width="830" height="253" alt="pinging my ip" src="https://github.com/user-attachments/assets/0289c006-bb42-4b43-be53-a0d244c87297" />
 
 
-> ✅ 4 out of 4 packets returned. Response times of 1–3ms are consistent with a local LAN hop. The machine can reach the router, which means the cable, switch, and LAN segment are all functioning. A failure here with passing loopback and own-IP tests would point to a cable fault, switch port issue, or gateway configuration problem.
+> 4 out of 4 packets returned. Response times of 1–3ms are consistent with a local LAN hop. The machine can reach the router, which means the cable, switch, and LAN segment are all functioning. A failure here with passing loopback and own-IP tests would point to a cable fault, switch port issue, or gateway configuration problem.
 
 ---
 
@@ -161,15 +161,16 @@ ping 192.168.1.1
 ping 8.8.8.8
 ```
 
-<img width="813" alt="ping 8.8.8.8 showing 4 successful replies at 31-43ms" src="screenshots/05-ping-internet-8.8.8.8-working.png" />
+<img width="813" height="247" alt="ping internet" src="https://github.com/user-attachments/assets/520655b5-91a3-40c6-adcc-f3cadff59fa4" />
 
-> ✅ 4 out of 4 packets returned. Response times of 31–43ms are normal for a public internet target. Packets are leaving the local network, routing through the internet, reaching Google's DNS servers, and returning successfully. Full connectivity confirmed at baseline.
+
+>  4 out of 4 packets returned. Response times of 31–43ms are normal for a public internet target. Packets are leaving the local network, routing through the internet, reaching Google's DNS servers, and returning successfully. Full connectivity confirmed at baseline.
 
 ---
 
-### Phase 3 — Simulate the Fault (Disconnect the Network Adapter)
+### Phase 3 - Simulate the Fault (Disconnect the Network Adapter)
 
-**Step 3.1 — Disconnect the VM Network Adapter**
+**Step 3.1 - Disconnect the VM Network Adapter**
 
 The virtual machine's network adapter is disconnected to simulate the user's reported internet failure. This is equivalent to unplugging a network cable or disabling the adapter on a physical machine.
 
@@ -177,28 +178,30 @@ After disconnecting, the same ping sequence is run to capture how each layer res
 
 ---
 
-**Step 3.2 — Ping the Public Internet After Disconnection**
+**Step 3.2 - Ping the Public Internet After Disconnection**
 
 ```cmd
 ping 8.8.8.8
 ```
 
-<img width="823" alt="ping 8.8.8.8 showing General failure after adapter disconnected" src="screenshots/06-ping-internet-after-disruption-general-failure.png" />
+<img width="823" height="210" alt="Ping internet after disrupting it" src="https://github.com/user-attachments/assets/0c263d19-ef9a-4313-9d98-44ddb4223392" />
 
-> ❌ All 4 packets failed with **General failure**. This is not the same as **Request timed out**. General failure means the operating system could not even attempt to send the packet — there is no usable network path at all. The adapter is disconnected and Windows has no route to the target. This confirms the fault is at the adapter/LAN layer, not at the internet or gateway level.
+
+>  All 4 packets failed with **General failure**. This is not the same as **Request timed out**. General failure means the operating system could not even attempt to send the packet as there is no usable network path at all. The adapter is disconnected and Windows has no route to the target. This confirms the fault is at the adapter/LAN layer, not at the internet or gateway level.
 
 ---
 
-**Step 3.3 — Run ipconfig /release and ipconfig /renew**
+**Step 3.3 - Run ipconfig /release and ipconfig /renew**
 
 ```cmd
 ipconfig /release
 ipconfig /renew
 ```
 
-<img width="875" alt="ipconfig /release and /renew both failing with media disconnected message" src="screenshots/07-ipconfig-release-and-renew-no-media.png" />
+<img width="875" height="248" alt="ip release and renew" src="https://github.com/user-attachments/assets/cc9d15cd-3738-4708-bf1c-7497783c59c6" />
 
-> ❌ Both commands return: **No operation can be performed on Ethernet0 while it has its media disconnected.** This is the expected result. The DHCP client cannot communicate with the DHCP server because there is no physical or virtual link. This output confirms that the adapter itself is the point of failure and eliminates DHCP misconfiguration as a cause.
+
+>  Both commands return: **No operation can be performed on Ethernet0 while it has its media disconnected.** This is the expected result. The DHCP client cannot communicate with the DHCP server because there is no physical or virtual link. This output confirms that the adapter itself is the point of failure and eliminates DHCP misconfiguration as a cause.
 
 ---
 
@@ -208,29 +211,31 @@ ipconfig /renew
 arp -a
 ```
 
-<img width="764" alt="arp -a showing No ARP Entries Found" src="screenshots/08-arp-a-no-entries-media-disconnected.png" />
+<img width="764" height="77" alt="Arp result" src="https://github.com/user-attachments/assets/f6f08778-1d30-4fb1-9cbb-698f0b1ac1f1" />
 
-> ❌ **No ARP Entries Found.** Under normal conditions, the ARP cache would contain at least the MAC address of the default gateway (192.168.1.1), because the machine would have resolved it during normal communication. An empty ARP cache with a disconnected adapter confirms that no layer-2 communication has occurred since the adapter went down. The machine cannot resolve MAC addresses on the local segment because it has no link.
+
+>  **No ARP Entries Found.** Under normal conditions, the ARP cache would contain at least the MAC address of the default gateway (192.***.*.*), because the machine would have resolved it during normal communication. An empty ARP cache with a disconnected adapter confirms that no layer-2 communication has occurred since the adapter went down. The machine cannot resolve MAC addresses on the local segment because it has no link.
 
 ---
 
-### Phase 4 — Restore Connectivity and Validate
+### Phase 4 - Restore Connectivity and Validate
 
-**Step 4.1 — Reconnect the Network Adapter**
+**Step 4.1 - Reconnect the Network Adapter**
 
 The virtual network adapter is re-enabled. The machine automatically re-establishes its DHCP lease and restores the link.
 
 ---
 
-**Step 4.2 — Ping the Public Internet After Reconnection**
+**Step 4.2 - Ping the Public Internet After Reconnection**
 
 ```cmd
 ping 8.8.8.8
 ```
 
-<img width="676" alt="ping 8.8.8.8 showing 4 successful replies after reconnecting adapter" src="screenshots/09-ping-internet-restored-after-reconnect.png" />
+<img width="676" height="254" alt="ping internet after  reconnecting to the internet" src="https://github.com/user-attachments/assets/103fae72-263b-4076-9d1c-5836350817e1" />
 
-> ✅ 4 out of 4 packets returned. Response times of 17–23ms confirm that connectivity is fully restored. The adapter re-joined the network, DHCP re-issued the lease, and the internet path is clear. The diagnostic sequence is complete.
+
+>  4 out of 4 packets returned. Response times of 17–23ms confirm that connectivity is fully restored. The adapter re-joined the network, DHCP re-issued the lease, and the internet path is clear. The diagnostic sequence is complete.
 
 ---
 
