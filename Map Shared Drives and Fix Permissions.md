@@ -38,8 +38,8 @@ This scenario covers two of the most frequent permission related support tasks: 
 | **Share Path** | \\\\[DC_IP]\\DepartmentShare |
 | **Mapped Drive Letter** | Z: |
 | **Security Group** | Department_Sales (Global Security) |
-| **Authorised User** | Jayson Sule (Jayson419[DPMAIN]) |
-| **Test User (unauthorised)** | Otobong Mkpong (Choko101@m[DOMAIN]) |
+| **Authorised User** | Jayson Sule (Jayson419[DOMAIN]) |
+| **Test User (unauthorised)** | Otobong Mkpong (Choko101@[DOMAIN]) |
 | **Tools Used** | ADUC, File Explorer, Advanced Sharing, Security tab (NTFS) |
 
 ---
