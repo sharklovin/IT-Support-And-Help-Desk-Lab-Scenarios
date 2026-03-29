@@ -72,7 +72,6 @@ Windows applies **two independent permission layers** to any network share. Both
 | **Share Permissions** | The share itself | Who can connect over the network | Advanced Sharing → Permissions |
 | **NTFS Permissions** | The file system | Who can read, write, or modify files/folders | Properties → Security tab |
 
-**The effective permission is always the most restrictive combination of both layers.**
 
 ```
 User attempts to open \\[DC_IP]\DepartmentShare
