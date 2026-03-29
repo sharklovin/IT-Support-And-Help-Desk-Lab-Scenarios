@@ -182,7 +182,7 @@ In ADUC, right-click **Users** → **New → Group**. Set the group name to **De
 
 ---
 
-**Step 4.2 — Confirm Group Properties**
+**Step 4.2 - Confirm Group Properties**
 
 Right-click **Department_Sales → Properties** to confirm it was created with Global scope and Security type.
 
@@ -199,11 +199,12 @@ Right-click the Users container → **New → User**. Fill in the user details:
 | Last name | Sule |
 | Full name | Jayson Sule |
 | User logon name | Jayson419 |
-| Domain | @mylab.local |
+| Domain | @[DOMAIN] |
 
 Click **Next**.
 
-<img width="430" alt="New Object User wizard — Jayson Sule details filled in" src="screenshots/06-creating-user-jayson-sule.png" />
+<img width="430" height="375" alt="06-creating-user-jayson-sule" src="https://github.com/user-attachments/assets/36302fad-ac7c-4c78-9849-534c95b3af2b" />
+
 
 ---
 
