@@ -158,16 +158,16 @@ Grant the following NTFS permissions to Department_Sales:
 
 | Permission | Allow |
 |---|---|
-| Read & execute | ✅ |
-| List folder contents | ✅ |
-| Read | ✅ |
-| Write | ✅ |
-| Full control | ❌ |
-| Special permissions | ❌ |
+| Read & execute | tick |
+| List folder contents | tick |
+| Read | tick |
+| Write | tick |
+| Full control | untick |
+| Special permissions | untick |
 
 Click **Apply**, then **OK**.
 
-> NTFS permissions are the authoritative access control layer. The combination of Read, Write, and Read & Execute gives members the ability to open, create, and edit files inside the share without being able to change the folder's permission settings.
+> NTFS permissions are the authoritative access control layer. The combination of Read, Write and Read and Execute gives members the ability to open, create, and edit files inside the share without being able to change the folder's permission settings.
 
 ---
 
