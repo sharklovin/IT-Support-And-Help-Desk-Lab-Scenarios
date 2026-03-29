@@ -108,47 +108,50 @@ On the Window Server 22 machine, navigate to a suitable location and create a ne
 <img width="625" height="454" alt="Department Share Folder" src="https://github.com/user-attachments/assets/9816e3b8-cd5a-48c2-95b6-3e15fca2b4af" />
 
 
-> The folder name becomes the share name that clients use to connect. Keeping it descriptive and without spaces avoids UNC path issues. In a production environment this folder would typically live on a dedicated data volume such as `D:\Shares\DepartmentShare` rather than on the system drive.
+> The folder name becomes the share name that clients use to connect.
 
 ---
 
-**Step 1.2 — Enable Advanced Sharing and Set the Share Name**
+**Step 1.2 - Enable Advanced Sharing and Set the Share Name**
 
 Right-click the folder → **Properties → Sharing tab → Advanced Sharing**. Tick **Share this folder**. Confirm the share name is **DepartmentShare**. Click **Permissions** before clicking OK.
 
-<img width="351" alt="Advanced Sharing dialog with Share this folder ticked" src="screenshots/02-advanced-sharing-enabled.png" />
+<img width="351" height="365" alt="Shared Folder tick" src="https://github.com/user-attachments/assets/900283be-83e8-487c-9247-b6932eabd8ee" />
 
-> The share name in the Advanced Sharing dialog is what appears in the UNC path. `\\192.168.1.10\DepartmentShare` is what clients will use to map the drive. Do not change this name after users have mapped it — doing so breaks all existing drive mappings.
+
+> The share name in the Advanced Sharing dialog is what appears in the UNC path. `\\[DC_IP]\DepartmentShare` is what clients will use to map the drive. Do not change this name after users have mapped it as doing so breaks all existing drive mappings.
 
 ---
 
-### Phase 2 — Configure Share Permissions
+### Phase 2 - Configure Share Permissions
 
 **Step 2.1 - Add Department_Sales to Share Permissions**
 
 Inside the Permissions dialog, click **Add** and type `Department_Sales`. Click **Check Names** to resolve the group against the directory, then click **OK**.
 
-<img width="458" alt="Typing Department_Sales and clicking Check Names" src="screenshots/05-adding-group-to-permissions.png" />
+<img width="363" height="446" alt="03-share-permissions-department-sales" src="https://github.com/user-attachments/assets/6d7a2e66-27c8-4205-bad7-4add4fa02c44" />
+
 
 ---
 
-**Step 2.2 — Grant Change and Read to Department_Sales**
+**Step 2.2 - Grant Change and Read to Department_Sales**
 
 With **Department_Sales** selected in the group list, tick **Allow** for both **Change** and **Read**. Leave **Full Control** unticked. Click **Apply**, then **OK**.
 
 <img width="363" alt="Share permissions showing Department_Sales with Change and Read allowed" src="screenshots/03-share-permissions-department-sales.png" />
 
-> **Why not Full Control on the share?** Full Control at the share level grants users the ability to change permissions on the share itself. This is almost never appropriate for end users. Granting Change allows reading and writing files without allowing share management. NTFS permissions handle the rest.
+> **You may ask why not Full Control on the share?** Full Control at the share level grants users the ability to change permissions on the share itself. This is almost never appropriate for end users. 
 
 ---
 
-### Phase 3 — Configure NTFS Permissions
+### Phase 3 - Configure NTFS Permissions
 
-**Step 3.1 — Open the Security Tab and Add Department_Sales**
+**Step 3.1 - Open the Security Tab and Add Department_Sales**
 
 Back on the folder Properties, click the **Security tab**. Click **Edit → Add**, type `Department_Sales`, click **Check Names**, then **OK**.
 
-<img width="364" alt="NTFS Security tab showing Department_Sales with permissions" src="screenshots/04-ntfs-permissions-department-sales.png" />
+<img width="454" height="253" alt="05-adding-group-to-permissions" src="https://github.com/user-attachments/assets/10b73449-74b0-49b4-88aa-28e3a5772c55" />
+
 
 Grant the following NTFS permissions to Department_Sales:
 
@@ -167,11 +170,11 @@ Click **Apply**, then **OK**.
 
 ---
 
-### Phase 4 — Create Users and the Security Group
+### Phase 4 - Create Users and the Security Group
 
-**Step 4.1 — Create the Department_Sales Security Group**
+**Step 4.1 - Create the Department_Sales Security Group**
 
-In ADUC, right-click **Users** (or the appropriate OU) → **New → Group**. Set the group name to **Department_Sales**, scope to **Global**, type to **Security**. Click **OK**.
+In ADUC, right-click **Users** → **New → Group**. Set the group name to **Department_Sales**, scope to **Global**, type to **Security**. Click **OK**.
 
 <img width="437" alt="New Object Group dialog — Department_Sales, Global, Security" src="screenshots/09-creating-department-sales-group.png" />
 
@@ -181,13 +184,11 @@ In ADUC, right-click **Users** (or the appropriate OU) → **New → Group**. Se
 
 Right-click **Department_Sales → Properties** to confirm it was created with Global scope and Security type.
 
-<img width="395" alt="Department_Sales Properties confirming Global Security group" src="screenshots/10-department-sales-group-properties.png" />
-
-> **Why Global Security?** A Global Security group is the standard for grouping domain users who share the same access requirements. It can be assigned to resources anywhere in the domain. Using a group rather than assigning permissions directly to users means access can be granted or revoked by adding or removing group membership alone — the share and NTFS permissions never need to change.
+<img width="430" height="375" alt="06-creating-user-jayson-sule" src="https://github.com/user-attachments/assets/318c8bea-fe01-4988-89f9-136fca955efc" />
 
 ---
 
-**Step 4.3 — Create the First Test User (Jayson Sule — Authorised)**
+**Step 4.3 - Create the First Test User (Jayson Sule — Authorised)**
 
 Right-click the Users container → **New → User**. Fill in the user details:
 
