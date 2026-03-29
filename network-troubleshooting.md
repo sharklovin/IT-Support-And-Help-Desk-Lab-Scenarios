@@ -33,49 +33,13 @@ This scenario trains the most important first-response skill in network support:
 | **Client OS** | Windows 11 |
 | **Hostname** | WIN11_CLIENT01 |
 | **Domain** | mylab.local |
-| **Client IP** | [DC_IP] (DHCP lease) |
+| **Client IP** | [CLIENT_IP] (DHCP lease) |
 | **Subnet Mask** | 255.255.255.0 |
-| **Default Gateway** | 192.***.*.*|
-| **DNS Server** | 192.***.*.** (Domain Controller) |
-| **DHCP Server** | 192.***.*.* |
+| **Default Gateway** | [DEFAULT_GATEWAY]|
+| **DNS Server** | [DC_IP] (Domain Controller) |
+| **DHCP Server** | [DC_IP] |
 | **Public IP tested** | 8.8.8.8 (Google DNS) |
 | **Tools Used** | Command Prompt, ipconfig, ping, arp |
-
----
-
-## The Diagnostic Sequence - Key Concept
-
-> **The single most important skill in network troubleshooting is knowing which test to run in which order. Testing from the inside out eliminates layers one at a time.**
-
-Every ping test in this lab proves or rules out a specific layer. If one layer fails, there is no point testing anything beyond it — you have already found the problem.
-
-```
-Layer 1 — Local TCP/IP Stack
-  ping 127.0.0.1
-  "Is the networking software on this machine working at all?"
-        │ FAIL → OS networking issue, check adapter driver or TCP/IP stack
-        │ PASS ↓
-
-Layer 2 — Own IP Address and NIC
-  ping 192.***.*.**  (your own IP)
-  "Is the network card bound to an IP address and responding?"
-        │ FAIL → IP not assigned, check DHCP or static config
-        │ PASS ↓
-
-Layer 3 — Local Network (LAN)
-  ping 192.168.1.1  (default gateway)
-  "Can this machine reach other devices on the same subnet?"
-        │ FAIL → Cable, switch, adapter, or LAN issue
-        │ PASS ↓
-
-Layer 4 — Internet Path
-  ping 8.8.8.8  (public IP)
-  "Can packets leave the local network and reach the internet?"
-        │ FAIL → Gateway routing, ISP, or firewall issue
-        │ PASS → Internet is working. If DNS fails, check DNS separately.
-```
-
-Running this sequence takes under two minutes and tells you exactly where to look.
 
 ---
 
@@ -107,10 +71,10 @@ Key values confirmed from this output:
 | Primary DNS Suffix |[DOMAIN NAME] | Domain membership confirmed |
 | Physical Address | 00-**-**-E1-**-07 | MAC address of the NIC |
 | DHCP Enabled | Yes | IP assigned dynamically |
-| IPv4 Address | 192.***.*.* | Client's current IP |
-| Default Gateway |  192.***.*.* | Router / exit point for all traffic |
-| DHCP Server |  192.***.*.* | Router is also providing DHCP leases |
-| DNS Servers | 192.***.*.** | Domain Controller handles DNS |
+| IPv4 Address | [CLIENT_IP] | Client's current IP |
+| Default Gateway | [DEFAULT_GATEWAY] | Router / exit point for all traffic |
+| DHCP Server |  [DHCP_IP] | Router is also providing DHCP leases |
+| DNS Servers | [DC_IP] | Domain Controller handles DNS |
 
 > Recording ipconfig /all at the start of every network fault investigation is non-negotiable. Without the baseline, you cannot prove what changed or confirm what was restored. It also tells you immediately whether the machine has an IP at all.
 ---
@@ -133,7 +97,7 @@ ping 127.0.0.1
 **Step 2.2 - Ping the Machine's Own IP Address (Layer 2 - NIC and IP Binding)**
 
 ```cmd
-ping 192.16*.*.**
+ping [CLIENT_IP]
 ```
 
 <img width="830" height="253" alt="pinging my ip" src="https://github.com/user-attachments/assets/0289c006-bb42-4b43-be53-a0d244c87297" />
@@ -243,7 +207,7 @@ ping 8.8.8.8
 
 ```
 ──────────────────────────────────────────────────────────────────
-TICKET #0054 | USER REPORTS INTERNET DOWN — CONNECTIVITY CHECK
+TICKET #0054 | USER REPORTS INTERNET DOWN - CONNECTIVITY CHECK
 Technician: Nnamso Mkpong | Date: March 2026 | Priority: STANDARD
 ──────────────────────────────────────────────────────────────────
 
@@ -253,26 +217,26 @@ ISSUE REPORTED:
 
 INVESTIGATION — BASELINE (before fault):
   1. Ran ipconfig /all. Confirmed:
-       IP: 192.168.1.49, Gateway: 192.168.1.1,
-       DNS: 192.168.1.10, DHCP: Enabled, Lease active.
-  2. ping 127.0.0.1 — Pass (TCP/IP stack healthy).
-  3. ping 192.168.1.49 — Pass (NIC and IP binding healthy).
-  4. ping 192.168.1.1 — Pass (LAN and gateway reachable).
-  5. ping 8.8.8.8 — Pass (internet path working).
+       IP: [CLIENT_IP], Gateway: [DEFAULT_GATEWAY],
+       DNS: [DC_IP], DHCP: Enabled, Lease active.
+  2. ping 127.0.0.1 - Pass (TCP/IP stack healthy).
+  3. ping [CLIENT_IP] - Pass (NIC and IP binding healthy).
+  4. ping [DEFAULT_GATEWAY] - Pass (LAN and gateway reachable).
+  5. ping 8.8.8.8 - Pass (internet path working).
   Baseline confirmed: all layers functional before simulation.
 
 FAULT SIMULATION:
   6. Disconnected virtual network adapter to simulate failure.
-  7. ping 8.8.8.8 — FAIL: General failure (no route available).
-  8. ipconfig /release — FAIL: Media disconnected.
-  9. ipconfig /renew  — FAIL: Media disconnected.
-  10. arp -a — No ARP entries. Gateway MAC not cached.
+  7. ping 8.8.8.8 - FAIL: General failure (no route available).
+  8. ipconfig /release - FAIL: Media disconnected.
+  9. ipconfig /renew  - FAIL: Media disconnected.
+  10. arp -a - No ARP entries. Gateway MAC not cached.
   Root cause: adapter disconnected / no physical link.
 
 RESOLUTION:
   11. Reconnected the network adapter.
   12. DHCP lease automatically re-established.
-  13. ping 8.8.8.8 — Pass. Connectivity restored.
+  13. ping 8.8.8.8 - Pass. Connectivity restored.
 
 OUTCOME:
   Internet connectivity confirmed restored. Root cause was
@@ -288,13 +252,13 @@ OUTCOME:
 
 | Test | Command | Before Fault | During Fault | After Restore |
 |---|---|---|---|---|
-| TCP/IP stack | `ping 127.0.0.1` | ✅ Pass | Not re-tested | ✅ Pass |
-| Own IP / NIC | `ping 192.168.1.49` | ✅ Pass | Not re-tested | ✅ Pass |
-| Default gateway | `ping 192.168.1.1` | ✅ Pass | Not re-tested | ✅ Pass |
-| Internet path | `ping 8.8.8.8` | ✅ Pass | ❌ General failure | ✅ Pass |
-| DHCP release | `ipconfig /release` | N/A | ❌ Media disconnected | N/A |
-| DHCP renew | `ipconfig /renew` | N/A | ❌ Media disconnected | N/A |
-| ARP cache | `arp -a` | Gateway cached | ❌ No entries | Populated |
+| TCP/IP stack | `ping 127.0.0.1` |  Pass | Not re-tested |  Pass |
+| Own IP / NIC | `[CLIENT_IP]` |  Pass | Not re-tested |  Pass |
+| Default gateway | `ping [DEFAULT_GATEWAY]` |  Pass | Not re-tested |  Pass |
+| Internet path | `ping 8.8.8.8` |  Pass |  General failure |  Pass |
+| DHCP release | `ipconfig /release` | N/A |  Media disconnected | N/A |
+| DHCP renew | `ipconfig /renew` | N/A |  Media disconnected | N/A |
+| ARP cache | `arp -a` | Gateway cached |  No entries | Populated |
 
 > The fault was isolated to the adapter/LAN layer. Layers 1 and 2 (TCP/IP stack and own IP) did not need retesting during the fault because **General failure** from ping and **media disconnected** from ipconfig already confirmed the adapter was the problem. Once the adapter was restored, a single internet ping was sufficient to confirm full recovery.
 
@@ -306,8 +270,7 @@ OUTCOME:
 |---|---|
 | ipconfig /all run and baseline values recorded | Pass |
 | ping 127.0.0.1 confirms TCP/IP stack healthy | Pass |
-| ping 192.168.1.49 confirms NIC and IP binding healthy | Pass |
-| ping 192.168.1.1 confirms gateway reachable over LAN | Pass |
+| ping [DEFAULT_GATEWAY] confirms gateway reachable over LAN | Pass |
 | ping 8.8.8.8 confirms internet path working at baseline | Pass |
 | ping 8.8.8.8 returns General failure after adapter disconnect | Pass |
 | ipconfig /release and /renew return media disconnected error | Pass |
@@ -318,9 +281,9 @@ OUTCOME:
 
 ## What I Learned
 
-1. **The ping sequence works from the inside out for a reason.** Starting at the loopback and working outward means you eliminate each layer before testing the next one. If loopback fails, nothing beyond it matters. If the gateway fails, testing the internet is pointless. The sequence is not arbitrary — it maps directly to the OSI model and tells you exactly where to stop looking.
+1. **The ping sequence works from the inside out for a reason.** Starting at the loopback and working outward means you eliminate each layer before testing the next one. If loopback fails, nothing beyond it matters. If the gateway fails, testing the internet is pointless. The sequence is not arbitrary as it maps directly to the OSI model and tells you exactly where to stop looking.
 
-2. **General failure and Request timed out mean different things.** General failure means the OS cannot even attempt to send the packet — there is no adapter, no route, or no link. Request timed out means the packet was sent but no reply came back — the device at the other end may be filtering pings, powered off, or unreachable. Knowing the difference stops you from drawing the wrong conclusion.
+2. **General failure and Request timed out mean different things.** General failure means the OS cannot even attempt to send the packet — there is no adapter, no route, or no link. Request timed out means the packet was sent but no reply came back as the device at the other end may be filtering pings, powered off, or unreachable. Knowing the difference stops you from drawing the wrong conclusion.
 
 3. **ipconfig /release and /renew failing is useful diagnostic information.** Media disconnected from these commands confirms the adapter itself is down, not the DHCP server or the lease. This rules out a server-side DHCP fault without needing to check the server at all.
 
@@ -334,7 +297,7 @@ OUTCOME:
 
 A user reporting that the internet is down is one of the most common helpdesk calls in any organisation. The instinct for many junior technicians is to restart the machine, blame the ISP, or raise a ticket with the network team. A technician who knows the four-step ping sequence can diagnose the fault in under two minutes without escalating.
 
-The layered approach matters because the answer changes everything about the response. If the loopback fails, you are dealing with a software or driver problem that no cable change will fix. If the gateway fails but the own-IP ping passes, you are looking at a physical connectivity issue — cable, switch port, or adapter. If the gateway passes but the internet fails, the problem is outside the LAN and belongs with the ISP or the router's WAN configuration. Each layer produces a different resolution path.
+The layered approach matters because the answer changes everything about the response. If the loopback fails, you are dealing with a software or driver problem that no cable change will fix. If the gateway fails but the own-IP ping passes, you are looking at a physical connectivity issue - cable, switch port, or adapter. If the gateway passes but the internet fails, the problem is outside the LAN and belongs with the ISP or the router's WAN configuration. Each layer produces a different resolution path.
 
 In a managed environment with hundreds of machines, the ability to run this sequence remotely using tools like PowerShell remoting or a remote support agent means a technician can diagnose and often resolve network faults without ever touching the machine. The commands are the same. The sequence is the same. The skill scales from a single user's laptop to an enterprise fleet.
 
