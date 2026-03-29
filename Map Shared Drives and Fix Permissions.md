@@ -333,13 +333,13 @@ Log back in as Otobong Mkpong and attempt to open the share again. The drive ope
 
 ```
 ──────────────────────────────────────────────────────────────────
-TICKET #0053 | DEPARTMENT SHARE ACCESS — PERMISSIONS FAULT
+TICKET #0053 | DEPARTMENT SHARE ACCESS - PERMISSIONS FAULT
 Technician: Nnamso Mkpong | Date: March 2026 | Priority: STANDARD
 ──────────────────────────────────────────────────────────────────
 
 ISSUE REPORTED:
-  User Otobong Mkpong (Choko101@mylab.local) unable to access
-  \\192.168.1.10\DepartmentShare. Error: "You do not have
+  User Otobong Mkpong (Choko101@DOMAIN) unable to access
+  \\DC_IP\DepartmentShare. Error: "You do not have
   permission to access this network resource." Second user
   Jayson Sule has no issues accessing the same share.
 
