@@ -126,7 +126,7 @@ ping 127.0.0.1
 
 
 
-> ✅ 4 out of 4 packets returned with sub-1ms response times. The local TCP/IP stack is functioning correctly. This test does not use the network adapter or any cables — it is purely internal to the operating system. A failure here would indicate a corrupted TCP/IP stack or disabled networking service.
+>  4 out of 4 packets returned with sub-1ms response times. The local TCP/IP stack is functioning correctly. This test does not use the network adapter or any cables — it is purely internal to the operating system. A failure here would indicate a corrupted TCP/IP stack or disabled networking service.
 
 ---
 
