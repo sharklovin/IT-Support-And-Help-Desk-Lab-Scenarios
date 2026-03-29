@@ -270,7 +270,7 @@ Click **Finish**.
 
 **Step 5.2 - Confirm the Drive Appears in This PC**
 
-After mapping, open **This PC** and confirm the **DepartmentShare (\\\\192.168.1.10) (Z:)** drive appears under Network locations.
+After mapping, open **This PC** and confirm the **DepartmentShare (\\\\DC_IP) (Z:)** drive appears under Network locations.
 
 <img width="584" height="306" alt="CONFIRMATION OF MAPPED NETWORKS" src="https://github.com/user-attachments/assets/5b32de7d-4a1b-4a60-b1f6-a485a90d6ddd" />
 
