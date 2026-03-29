@@ -164,7 +164,11 @@ Grant the following NTFS permissions to Department_Sales:
 | Full control | untick |
 | Special permissions | untick |
 
+
 Click **Apply**, then **OK**.
+
+
+<img width="364" height="448" alt="Grant the following NTFS permissions to Department_Sales" src="https://github.com/user-attachments/assets/7e8942a2-6931-4b25-b887-ea952b6bd960" />
 
 > NTFS permissions are the authoritative access control layer. The combination of Read, Write and Read and Execute gives members the ability to open, create, and edit files inside the share without being able to change the folder's permission settings.
 
