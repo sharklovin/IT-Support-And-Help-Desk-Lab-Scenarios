@@ -95,7 +95,8 @@ ipconfig /all
 
 This returns the full network configuration including IP address, MAC address, subnet, gateway, DNS and DHCP lease details. Record these values before any changes are made as they are the baseline you compare against after a fault is introduced.
 
-<img width="1018" height="624" alt="Run ipconfig all and Record the Network Profile" src="https://github.com/user-attachments/assets/b764c76e-2208-4612-9b75-5c2f650b5994" />
+<img width="1018" height="624" alt="Run ipconfig all and Record the Network Profile" src="https://github.com/user-attachments/assets/7ba23cd9-831f-42f6-9da6-ae4b8897c164" />
+
 
 
 Key values confirmed from this output:
@@ -121,16 +122,18 @@ Key values confirmed from this output:
 ```cmd
 ping 127.0.0.1
 ```
-<img width="894" alt="ping 127.0.0.1 showing 4 successful replies" src="screenshots/02-ping-localhost-127.0.0.1.png" />
+<img width="894" height="259" alt="Ping the Loopback Address" src="https://github.com/user-attachments/assets/42fd3967-d0cf-4341-88e0-b65604a41ff1" />
+
+
 
 > ✅ 4 out of 4 packets returned with sub-1ms response times. The local TCP/IP stack is functioning correctly. This test does not use the network adapter or any cables — it is purely internal to the operating system. A failure here would indicate a corrupted TCP/IP stack or disabled networking service.
 
 ---
 
-**Step 2.2 — Ping the Machine's Own IP Address (Layer 2 — NIC and IP Binding)**
+**Step 2.2 - Ping the Machine's Own IP Address (Layer 2 - NIC and IP Binding)**
 
 ```cmd
-ping 192.168.1.49
+ping 192.16*.*.**
 ```
 
 <img width="830" alt="ping 192.168.1.49 showing 4 successful replies" src="screenshots/03-ping-own-ip-192.168.1.49.png" />
@@ -145,7 +148,8 @@ ping 192.168.1.49
 ping 192.168.1.1
 ```
 
-<img width="874" alt="ping 192.168.1.1 showing 4 successful replies at 1-3ms" src="screenshots/04-ping-default-gateway-192.168.1.1.png" />
+<img width="830" height="253" alt="pinging my ip" src="https://github.com/user-attachments/assets/0289c006-bb42-4b43-be53-a0d244c87297" />
+
 
 > ✅ 4 out of 4 packets returned. Response times of 1–3ms are consistent with a local LAN hop. The machine can reach the router, which means the cable, switch, and LAN segment are all functioning. A failure here with passing loopback and own-IP tests would point to a cable fault, switch port issue, or gateway configuration problem.
 
