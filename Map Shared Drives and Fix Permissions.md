@@ -90,7 +90,7 @@ NTFS Permission check   Access Denied immediately
 Access granted   Access Denied
 ```
 
-In most enterprise environments, share permissions are set to **Change** for the security group and NTFS permissions are used for fine grained control. This is the approach used in this lab.
+The approach used in this lab is used in most enterprise environments where share permissions are set to **Change** for the security group and NTFS permissions are used for fine grained control.
 
 ---
 
