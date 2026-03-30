@@ -132,7 +132,8 @@ Both domains resolve successfully. The DNS server identifies itself as `dns.goog
 
 Navigate to **Settings → Network and Internet → Ethernet → DNS server assignment → Edit**. Change DNS from Automatic or 8.8.8.8 to manual entries of `10.10.10.10` and `10.10.10.11`. These addresses do not exist on the network and will not respond to any queries.
 
-<img width="698" alt="DNS settings showing incorrect servers 10.10.10.10 and 10.10.10.11" src="screenshots/04-incorrect-dns-settings.png" />
+<img width="698" height="551" alt="04 - Change DNS to a Non-Existent Server" src="https://github.com/user-attachments/assets/58d5aa6d-88e9-42a4-bc77-59e9b64e9b74" />
+
 
 > This simulates the most common real-world DNS fault: a machine that has been manually configured with the wrong DNS server, either by a previous technician setting a static entry incorrectly, or by a DHCP scope pointing to a server that was decommissioned.
 
