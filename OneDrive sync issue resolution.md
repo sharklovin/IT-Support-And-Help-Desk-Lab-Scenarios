@@ -1,10 +1,11 @@
-# Lab 10: OneDrive Sync Issue Resolution
+# OneDrive Sync Issue Resolution
 
 > **Author:** Nnamso Mkpong
 >
-> **Domain:** Microsoft 365 — Cloud File Sync
+> **Domain:** Microsoft 365 - Cloud File Sync
 >
 > **Environment:** Windows 11 Client, OneDrive Personal (Microsoft Account)
+> 
 > **Completed:** April 2026
 
 ---
@@ -47,7 +48,7 @@ Every file and folder in the OneDrive directory shows a status icon in the Statu
 | Icon | Meaning | What to do |
 |---|---|---|
 | Green circle with tick | Synced to cloud | Nothing needed |
-| Blue cloud outline | Available online only, not downloaded locally | Normal — file is in cloud |
+| Blue cloud outline | Available online only, not downloaded locally | Normal  file is in cloud |
 | Blue spinning arrows | Sync in progress | Wait and monitor |
 | Pause symbol in breadcrumb | Sync paused by user or policy | Resume sync |
 | Red circle with X | Sync error | Check error details in system tray |
@@ -60,31 +61,33 @@ The breadcrumb bar at the top of File Explorer is equally useful. When OneDrive 
 
 ---
 
-### Phase 1 — Confirm OneDrive Is Signed In and Healthy
+### Phase 1 - Confirm OneDrive Is Signed In and Healthy
 
-**Step 1.1 — Sign Into OneDrive and Verify the Account Is Connected**
+**Step 1.1 - Sign Into OneDrive and Verify the Account Is Connected**
 
-Open File Explorer and navigate to the OneDrive folder. Confirm the breadcrumb shows **OneDrive** and that the account name appears in the left panel. The sync client must be signed in and running before any test folder is created.
+Open File Explorer and navigate to the OneDrive folder. Confirm the breadcrumb shows **OneDrive** and that the account name appears in the left panel. The sync client must be signed in and running before any test or real world folder is created.
 
 ---
 
-**Step 1.2 — Create the Sync Test Folder**
+**Step 1.2 - Create the Sync Test Folder**
 
 Inside the OneDrive root, create a new folder named **Sync Test**. After creation, confirm the folder appears with a green tick in the Status column, indicating it has been registered and synced to the cloud.
 
-<img width="1024" alt="OneDrive root showing Sync Test folder with green tick status" src="screenshots/01-onedrive-sync-test-folder-created.png" />
+<img width="1024" height="531" alt="01-Create the Sync Test Folder" src="https://github.com/user-attachments/assets/92e0025b-dfe8-4f6a-9783-89938db4b643" />
+
 
 > The green tick confirms that the Sync Test folder has been uploaded to the cloud. The breadcrumb shows **OneDrive** rather than Paused or Error, confirming the client is healthy at this point. This is the baseline state before the fault is introduced.
 
 ---
 
-**Step 1.3 — Create a Test File Inside the Folder**
+**Step 1.3 - Create a Test File Inside the Folder**
 
 Open the Sync Test folder and create a text file named **TestFile.txt**. Confirm the file shows a green tick in the Status column within a few seconds of saving.
 
-<img width="1023" alt="Inside Sync Test folder showing TestFile.txt with green tick status" src="screenshots/02-testfile-created-and-synced.png" />
 
-> ✅ TestFile.txt shows a green tick. The breadcrumb confirms the full path: **OneDrive > Nnamso-Personal > Sync Test**. The file is synced to the cloud and would be visible in a browser at onedrive.live.com. Baseline is confirmed.
+
+
+>  TestFile.txt shows a green tick. The breadcrumb confirms the full path: **OneDrive > Nnamso-Personal > Sync Test**. The file is synced to the cloud and would be visible in a browser at onedrive.live.com. Baseline is confirmed.
 
 ---
 
