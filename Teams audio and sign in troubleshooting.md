@@ -129,20 +129,22 @@ This simulates what happens when:
 
 **Step 2.2 - What the User Experiences During This Fault**
 
-With the microphone disabled at the Windows level, when the user joins a Teams call:
+As shown below, with the microphone disabled at the Windows level, when the user joins a Teams call:
 
 - Other participants cannot hear them
 - Teams may show the microphone as available in the Devices settings but produce no audio
 - The mic button in the call toolbar appears functional but produces no input
 - There is no error message or warning visible to the user
 
-This is why this fault is consistently misdiagnosed. The user sees nothing obviously wrong in Teams. The fault is invisible at the application layer and only visible in the Windows Recording tab.
+<img width="1017" height="708" alt="04 What the User Experiences During This Fault" src="https://github.com/user-attachments/assets/45a5003d-4975-463b-86f1-21f88389e99b" />
+
+This is why this fault is consistently misdiagnosed. The fault is invisible at the application layer and only visible in the Windows Recording tab.
 
 ---
 
-### Phase 3 — Check the Privacy Settings
+### Phase 3 - Check the Privacy Settings
 
-**Step 3.1 — Verify Microphone Access in Privacy and Security**
+**Step 3.1 - Verify Microphone Access in Privacy and Security**
 
 Navigate to **Settings → Privacy & Security → Microphone**. Confirm that **Microphone access** is toggled On at the system level and that **Microsoft Teams** specifically shows as On in the per-app list.
 
@@ -163,6 +165,17 @@ Return to **Settings → System → Sound → More sound settings → Recording 
 **Step 4.2 — Confirm Teams Detects the Device**
 
 Return to Teams **Settings → Devices** and confirm the Microphone dropdown still shows the correct device. If Teams had detected the device disappearing during the fault, it may have cleared the selection or defaulted to another device. Verify and correct if needed.
+
+**Step 3.1 - Verify Microphone Access in Privacy and Security**
+
+Navigate to **Settings → Privacy & Security → Microphone**. Confirm that **Microphone access** is toggled On at the system level and that **Microsoft Teams** specifically shows as On in the per-app list.
+
+<img width="724" alt="Privacy and Security Microphone settings showing system access On and Teams access On" src="screenshots/04-privacy-microphone-access-teams-on.png" />
+
+> ✅ Microphone access is enabled at the system level and Teams specifically has microphone permission granted. The last accessed timestamp confirms Teams was actively using the microphone as recently as 4/1/2026 at 3:06 PM.
+
+> This screen matters because it represents a separate permission layer from the device state. A microphone can be enabled in the Recording tab but blocked from Teams by a privacy setting. In that scenario the device shows as available but Teams cannot access it. Checking this in every audio fault investigation takes 30 seconds and eliminates a category of fault.
+
 
 **Step 4.3 — Join a Test Call and Confirm Audio**
 
