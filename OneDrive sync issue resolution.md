@@ -101,7 +101,8 @@ Right-click the OneDrive icon in the system tray and select **Pause syncing**. S
 
 After pausing, return to the OneDrive folder in File Explorer.
 
-<img width="1022" height="533" alt="04 -Pause OneDrive Sync" src="https://github.com/user-attachments/assets/1e53c939-8901-43b9-b332-b9804c289563" />
+<img width="1027" height="537" alt="03-  Pause OneDrive Sync" src="https://github.com/user-attachments/assets/3b1e2fc4-f129-47d6-b5b0-2ab4c958a14e" />
+
 
 
 
@@ -115,33 +116,37 @@ Open TestFile.txt, make a change and save it. This represents what a user does w
 
 Navigate into the Sync Test folder to observe the status of the file.
 
-<img width="1022" alt="Inside Sync Test folder while paused — TestFile showing sync pending spinner icon" src="screenshots/04-testfile-sync-pending-while-paused.png" />
+<img width="1022" height="533" alt="04 -Pause OneDrive Sync" src="https://github.com/user-attachments/assets/93004474-dc68-477c-914c-2da899616fd0" />
 
-> ❌ The breadcrumb still shows **Paused**. TestFile.txt now shows the **sync pending** icon: a circular arrow indicating that changes are queued but not yet uploading. The file has been modified locally but the cloud version is out of date. If the user checked OneDrive on another device or in the browser right now, they would not see their latest changes.
 
-This is the point in a real support call where the technician can explain to the user what is happening. Their file is safe on the local machine. It has not been lost. It is simply waiting for sync to resume.
+> The breadcrumb still shows **Paused**. TestFile.txt now shows the **sync pending** icon: a circular arrow indicating that changes are queued but not yet uploading. The file has been modified locally but the cloud version is out of date. If the user checked OneDrive on another device or in the browser right now, they would not see their latest changes.
+
+Their file is safe on the local machine has not been lost. It is simply waiting for sync to resume.
 
 ---
 
-### Phase 3 — Resume Sync and Verify Recovery
+### Phase 3 - Resume Sync and Verify Recovery
 
-**Step 3.1 — Resume OneDrive Sync**
+**Step 3.1 - Resume OneDrive Sync**
 
 Right-click the OneDrive icon in the system tray and select **Resume syncing**. Return to the OneDrive root folder in File Explorer.
 
-<img width="1019" alt="OneDrive root after resuming sync — breadcrumb shows OneDrive, Sync Test folder has green tick" src="screenshots/05-sync-resumed-folder-healthy.png" />
+<img width="1019" height="537" alt="05 - folder after starting sync" src="https://github.com/user-attachments/assets/ccef113f-b596-449c-a123-9563d34ddf4e" />
 
-> ✅ The breadcrumb has returned to **OneDrive**. The Sync Test folder shows a green tick. Sync has resumed and the client has processed the queued changes. The folder-level sync is confirmed healthy.
+
+>  The breadcrumb has returned to **OneDrive**. The Sync Test folder shows a green tick. Sync has resumed and the client has processed the queued changes. The folder-level sync is confirmed healthy.
 
 ---
 
-**Step 3.2 — Confirm the File Has Synced Successfully**
+**Step 3.2 - Confirm the File Has Synced Successfully**
 
 Open the Sync Test folder and confirm that TestFile.txt now shows a green tick.
 
-<img width="1023" alt="Inside Sync Test folder after sync resumed — TestFile showing green tick and confirmed timestamp" src="screenshots/06-testfile-synced-final-validation.png" />
+<img width="1023" height="527" alt="06- Confirm the File Has Synced Successfully" src="https://github.com/user-attachments/assets/9764f5e1-fa0c-4516-ac1b-128efd0b8997" />
 
-> ✅ TestFile.txt shows a green tick. The breadcrumb confirms the full path: **OneDrive > Nnamso-Personal > Sync Test**. The timestamp records the moment the file was synced. The fault is resolved and the file is now available in the cloud and on any other signed-in device.
+
+
+> TestFile.txt shows a green tick. The breadcrumb confirms the full path: **OneDrive > Nnamso-Personal > Sync Test**. The timestamp records the moment the file was synced. The fault is resolved and the file is now available in the cloud and on any other signed-in device.
 
 ---
 
