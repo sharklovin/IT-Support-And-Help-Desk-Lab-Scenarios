@@ -84,6 +84,7 @@ Inside the OneDrive root, create a new folder named **Sync Test**. After creatio
 
 Open the Sync Test folder and create a text file named **TestFile.txt**. Confirm the file shows a green tick in the Status column within a few seconds of saving.
 
+<img width="1027" height="537" alt="03-  Pause OneDrive Sync" src="https://github.com/user-attachments/assets/f65677bc-a844-42b5-b929-f855f5be337b" />
 
 
 
@@ -91,23 +92,25 @@ Open the Sync Test folder and create a text file named **TestFile.txt**. Confirm
 
 ---
 
-### Phase 2 — Simulate the Fault (Pause Sync)
+### Phase 2 - Simulate the Fault (Pause Sync)
 
-**Step 2.1 — Pause OneDrive Sync**
+**Step 2.1 - Pause OneDrive Sync**
 
-Right-click the OneDrive icon in the system tray and select **Pause syncing**. Select the duration. This simulates the state a user's machine enters when sync is suspended — either deliberately through this menu, by a Group Policy, or automatically when the machine detects a metered connection.
+Right-click the OneDrive icon in the system tray and select **Pause syncing**. Select the duration. This simulates the state a user's machine enters when sync is suspended - either deliberately through this menu, by a Group Policy, or automatically when the machine detects a metered connection.
 
 After pausing, return to the OneDrive folder in File Explorer.
 
-<img width="1027" alt="OneDrive root after pausing — breadcrumb shows Paused, Sync Test folder has no status icon" src="screenshots/03-onedrive-paused-folder-view.png" />
+<img width="1022" height="533" alt="04 -Pause OneDrive Sync" src="https://github.com/user-attachments/assets/1e53c939-8901-43b9-b332-b9804c289563" />
 
-> ⚠️ The breadcrumb now shows **Paused** instead of OneDrive. The Sync Test folder no longer shows a status icon, indicating that no sync activity is occurring. This is exactly what the user is experiencing when they report that files are not uploading.
+
+
+>  The breadcrumb now shows **Paused** instead of OneDrive. The Sync Test folder no longer shows a status icon, indicating that no sync activity is occurring. This is exactly what the user is experiencing when they report that files are not uploading.
 
 ---
 
-**Step 2.2 — Modify the Test File While Sync Is Paused**
+**Step 2.2 - Modify the Test File While Sync Is Paused**
 
-Open TestFile.txt, make a change, and save it. This represents what a user does when they continue working without realising that sync is paused — their changes accumulate locally but are not reaching the cloud.
+Open TestFile.txt, make a change and save it. This represents what a user does when they continue working without realising that sync is paused and their changes accumulate locally but are not reaching the cloud.
 
 Navigate into the Sync Test folder to observe the status of the file.
 
