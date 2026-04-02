@@ -18,7 +18,7 @@ Install an approved software package on a Windows 11 workstation, verify the cor
 
 ## Business Scenario
 
-> **Ticket #0042 | Software Deployment — Approved Version Required Before Shift Start**
+> **Ticket #0042 | Software Deployment - Approved Version Required Before Shift Start**
 >
 > A user needs a line-of-business application installed before the start of their shift. A previous installation is suspected on the machine and the IT department requires that the approved version is confirmed, any conflicting version is removed, and evidence of the correct state is captured before the user begins work.
 
