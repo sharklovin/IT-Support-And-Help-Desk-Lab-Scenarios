@@ -1,8 +1,8 @@
-# Lab 16: Disk Cleanup and Low Storage Remediation
+# Disk Cleanup and Low Storage Remediation
 
 > **Author:** Nnamso Mkpong
 >
-> **Domain:** Windows 11 — Storage Management and Disk Cleanup
+> **Domain:** Windows 11 - Storage Management and Disk Cleanup
 >
 > **Environment:** Windows 11 Client, File Explorer, Settings Storage, Disk Cleanup, Recycle Bin
 >
@@ -20,7 +20,7 @@ Investigate and resolve a low disk space complaint on a Windows 11 workstation w
 
 > **Ticket #0078 | Low Disk Space — Outlook Sending Failures and Windows Update Blocked**
 >
-> A user reports that Microsoft Outlook keeps failing when trying to send and receive email, and that Windows Update has not completed successfully in several weeks. Both failures are being caused by the same underlying condition: the system drive is critically low on free space. The user has not made any deliberate changes to the machine and does not know why the drive is full. IT support has been asked to investigate the storage breakdown, recover space safely without removing any user data or business applications, and confirm the system returns to a healthy state.
+> A user reports that Microsoft Outlook keeps failing when trying to send and receive email and that Windows Update has not completed successfully in several weeks. Both failures are being caused by the same underlying condition: the system drive is critically low on free space. The user has not made any deliberate changes to the machine and does not know why the drive is full. IT support has been asked to investigate the storage breakdown, recover space safely without removing any user data or business applications and confirm the system returns to a healthy state.
 
 Low disk space is one of the most impactful and preventable faults in a managed Windows environment. Outlook requires free space to maintain its cache, process attachments, and write temporary files during send and receive operations. Windows Update requires free space to download update packages, extract them, and apply them. When the system drive falls below approximately 4 GB of free space both of these processes begin to fail silently from the user's perspective, generating errors they cannot diagnose themselves. The root cause is almost always a combination of accumulated temporary files, a full Recycle Bin, and installer cache growth over time.
 
@@ -32,43 +32,11 @@ Low disk space is one of the most impactful and preventable faults in a managed 
 |---|---|
 | **Client OS** | Windows 11 |
 | **Account** | Nnamso Mkpong (nnamsotechie@gmail.com) |
-| **System Drive** | Local Disk C: — 63.0 GB total capacity |
+| **System Drive** | Local Disk C: - 63.0 GB total capacity |
 | **Pre-Cleanup Free Space** | 4.08 GB (4.09 GB shown in File Explorer) |
 | **Post-Cleanup Free Space** | 34.5 GB |
 | **Space Recovered** | approximately 30.4 GB |
-| **Tools Used** | File Explorer, Settings → System → Storage, Disk Cleanup (cleanmgr), Recycle Bin |
-
----
-
-## Storage Diagnostic Stack — Key Concept
-
-> **Low disk space faults have a cascading effect. Understanding the three layers of the storage problem tells you where to look and what is safe to remove.**
-
-```
-Layer 3 — Application Failures (symptoms visible to user)
-  Outlook send and receive errors
-  Windows Update download failures
-  "Disk full" notifications from Windows
-       │ These are symptoms, not causes
-       │ Fix the storage problem and these resolve automatically
-       ▼
-
-Layer 2 — Storage Breakdown (Settings → System → Storage)
-  Shows exactly which category is consuming the most space
-  "Where is the disk space actually going?"
-       │ Temporary files largest category → run Disk Cleanup
-       │ Installed apps largest category → audit for unused applications
-       │ Other people or Documents → discuss with user before removing
-       ▼
-
-Layer 1 — Free Space Confirmation (File Explorer → This PC)
-  The headline number that confirms severity and tracks recovery
-  "How much space do we have and how much did we recover?"
-       │ Under 5 GB free on system drive → critical, act immediately
-       │ After cleanup → recheck and record the new value
-```
-
-In this lab the fault is confirmed at Layer 1 (4.09 GB free on a 63 GB drive) and the root cause is identified at Layer 2 (30.0 GB consumed by temporary files). Layer 3 symptoms (Outlook and Windows Update failures) are resolved as a direct consequence of restoring free space.
+| **Tools Used** | File Explorer, Settings → System → Storage, Disk Cleanup, Recycle Bin |
 
 ---
 
@@ -76,96 +44,79 @@ In this lab the fault is confirmed at Layer 1 (4.09 GB free on a 63 GB drive) an
 
 ---
 
-### Phase 1 — Record the Pre-Cleanup Baseline
+### Phase 1 - Record the Pre-Cleanup Baseline
 
-**Step 1.1 — Check Free Space in File Explorer**
+**Step 1.1 - Check Free Space in File Explorer**
 
 Open File Explorer and navigate to This PC. Observe the Local Disk C: tile. The free space value and the colour of the storage bar provide an immediate indication of severity. A red bar indicates Windows has flagged the drive as critically low.
 
-![01 Local Disk C before cleanup — 4.09 GB free of 63.0 GB](screenshots/01_local_disk_low_space_annotated.png)
+<img width="553" height="383" alt="01 Local disk low space" src="https://github.com/user-attachments/assets/92a3bbe1-91c5-456a-a3e4-1d1b2fb7708a" />
+
 
 Pre-cleanup values recorded:
 
-| Item | Value |
-|---|---|
-| Drive | Local Disk C: |
-| Total capacity | 63.0 GB |
-| Free space | 34.5 GB shown in Image 1 — however image 2 below shows the critical fault state |
-| Bar colour | Red — Windows critical low space warning |
-| DVD Drive D: | CCCOMA_X64FRE_EN-US_DV9 — Windows installation media, 0 bytes free of 7.88 GB |
+> Drive - Local Disk C:
+> Total capacity - 63.0 GB
+> Free space - 4.09
+> Bar colour Red - Windows critical low space warning
 
-> **Highlighted:** The free space value on C: is the first number to record and the last number to compare after cleanup. The red progress bar is Windows communicating that the drive is below its critical threshold. At this state, Outlook and Windows Update do not have enough room to operate.
+> **Highlighted:** The red progress bar is Windows communicating that the drive is below its critical threshold. At this state, Outlook and Windows Update do not have enough room to operate.
 
 ---
 
-**Step 1.2 — Review Storage Breakdown in Settings**
+**Step 1.2 - Review Storage Breakdown in Settings**
 
-Navigate to **Settings → System → Storage** to see a full breakdown of what is consuming space on the drive. This view gives category-level detail that File Explorer does not provide, and it identifies the largest target for cleanup without requiring manual investigation.
+Navigate to **Settings → System → Storage** to see a full breakdown of what is consuming space on the drive. This view gives category-level detail that File Explorer does not provide and it identifies the largest target for cleanup without requiring manual investigation.
 
-![02 Settings Storage breakdown — 58.9 GB used, 4.08 GB free, 30 GB in temporary files](screenshots/02_storage_settings_breakdown_annotated.png)
+<img width="1364" height="720" alt="02 storage settings" src="https://github.com/user-attachments/assets/ef9fc662-e038-4212-a390-7628630e82e6" />
+
 
 Storage breakdown at pre-cleanup baseline:
 
-| Category | Space Used | Notes |
-|---|---|---|
-| **Temporary files** | **30.0 GB** | Largest single category — primary cleanup target |
-| Installed apps | 8.35 GB | Review for unused applications |
-| Other people | 1.97 GB | Other user profiles — do not remove without authorisation |
-| Documents | 1.00 GB | User documents — do not remove |
-| Total used | 58.9 GB | Out of 63.0 GB |
-| **Free space** | **4.08 GB** | Critical threshold — Outlook and Windows Update failing |
+**Temporary files** - **30.0 GB** (Largest single category — primary cleanup target)
+Installed apps - 8.35 GB  (Review for unused applications)
+Other people - 1.97 GB (Other user profiles — do not remove without authorisation)
+Documents - 1.00 GB (User documents — do not remove)
+Total used - 58.9 GB (Out of 63.0 GB)
+**Free space** - **4.08 GB** (Critical threshold — Outlook and Windows Update failing)
 
 > **Highlighted:** The red storage bar at the top confirms 58.9 GB consumed out of 63.0 GB total with only 4.08 GB remaining. Temporary files at 30.0 GB is the dominant category and the safest target for cleanup — Windows regenerates them as needed so removing them does not affect any user data or application. Storage Sense is shown as On at the bottom of the screen. Despite being active it has not prevented the buildup, which indicates the accumulation was rapid or the Storage Sense schedule had not yet triggered.
 
 ---
 
-### Phase 2 — Run Disk Cleanup
+### Phase 2 - Run Disk Cleanup
 
-**Step 2.1 — Launch Disk Cleanup**
+**Step 2.1 - Launch Disk Cleanup**
 
-Open Disk Cleanup by pressing **Windows + R**, typing `cleanmgr`, and pressing Enter. Select drive C: if prompted. Allow the tool to calculate the files available for removal.
+Open Disk Cleanup by pressing **Windows + R**, typing `cleanmgr` and pressing Enter. Select drive C: if prompted. Allow the tool to calculate the files available for removal.
 
-![03 Disk Cleanup showing selected items and 23.0 MB to recover](screenshots/03_disk_cleanup_tool_annotated.png)
-
-Files selected for deletion:
-
-| File Category | Size | Selected | Notes |
-|---|---|---|---|
-| DirectX Shader Cache | 36.0 KB | No | Graphics cache — safe to remove but not selected here |
-| Delivery Optimization Files | 95.4 MB | No | Windows Update delivery cache — review before removing |
-| **Recycle Bin** | **5.20 MB** | **Yes** | Files pending permanent deletion |
-| Temporary files | 0 bytes | No | No additional temp files found by this tool at this time |
-| **Thumbnails** | **11.0 MB** | **Yes** | Image preview cache — safe to remove, regenerated automatically |
-
-Total space to recover via Disk Cleanup: **23.0 MB**
+<img width="369" height="451" alt="03 Disk clean up" src="https://github.com/user-attachments/assets/21d18fc2-0f86-4fc5-9146-709a52adba98" />
 
 > The Disk Cleanup tool is showing a relatively small amount in this run (23.0 MB) because the primary 30 GB of temporary files identified in Settings Storage was largely cleared through a different path earlier in the cleanup process. Disk Cleanup supplements rather than replaces the Settings Storage cleanup for large temporary file accumulations.
 
-> **Highlighted:** Recycle Bin (5.20 MB) and Thumbnails (11.0 MB) are both checked. The Thumbnails entry is always safe to remove — Windows rebuilds thumbnail previews automatically the next time a folder containing images is opened. This does not affect any user files.
+> **Highlighted:** Recycle Bin (5.20 MB) and Thumbnails (11.0 MB) are both checked. The Thumbnails entry is always safe to remove - Windows rebuilds thumbnail previews automatically the next time a folder containing images is opened. This does not affect any user files.
 
 ---
 
-### Phase 3 — Empty the Recycle Bin
+### Phase 3 - Empty the Recycle Bin
 
-**Step 3.1 — Confirm Permanent Deletion**
+**Step 3.1 - Confirm Permanent Deletion**
 
 When Recycle Bin is selected in Disk Cleanup and OK is clicked, Windows presents a confirmation dialog before permanently deleting the contents. Read the prompt before confirming.
 
-![04 Permanent delete confirmation for Recycle Bin items](screenshots/04_recycle_bin_confirm_annotated.png)
+<img width="482" height="110" alt="04 empty recycle bin" src="https://github.com/user-attachments/assets/da0f1fa7-5d7f-43e6-afcc-165ca0e7561e" />
 
-> **Highlighted:** The dialog reads "Are you sure you want to permanently delete these 2 items?" This is the final safety gate before the Recycle Bin contents are irrecoverably removed. In a business environment, always confirm with the user that they do not have any recently deleted files in the Recycle Bin that they may need to recover before clicking Yes.
-
-> Once Yes is clicked, the files cannot be recovered through normal Windows means. This is not a concern for Disk Cleanup generated Recycle Bin entries, but it is worth noting as part of safe practice when performing this task on a user's machine.
+> Once Yes is clicked, the files cannot be recovered through normal Windows means.
 
 ---
 
-### Phase 4 — Verify the Post-Cleanup State
+### Phase 4 - Verify the Post-Cleanup State
 
-**Step 4.1 — Recheck Free Space in File Explorer**
+**Step 4.1 - Recheck Free Space in File Explorer**
 
 After the cleanup operations are complete, return to File Explorer → This PC and observe the updated free space value on Local Disk C:.
 
-![05 Local Disk C after cleanup — 34.5 GB free of 63.0 GB](screenshots/05_local_disk_after_cleanup_annotated.png)
+<img width="691" height="328" alt="05 storage after cleaned" src="https://github.com/user-attachments/assets/f1fc5ce4-3028-4ca2-8a68-86cf5d04be17" />
 
 Post-cleanup values recorded:
 
@@ -175,7 +126,7 @@ Post-cleanup values recorded:
 | Space used | 58.9 GB | approximately 28.5 GB | 30.4 GB removed |
 | Storage bar colour | Red (critical) | Blue (healthy) | Warning resolved |
 
-> **Highlighted:** The free space on Local Disk C: has increased from 4.09 GB to 34.5 GB — a recovery of approximately 30.4 GB. The storage bar has changed from red to the standard fill colour, confirming Windows no longer considers the drive to be in a critical low space state. Outlook and Windows Update now have sufficient free space to operate normally.
+> **Highlighted:** The free space on Local Disk C: has increased from 4.09 GB to 34.5 GB to a recovery of approximately 30.4 GB. The storage bar has changed from red to the standard fill colour, confirming Windows no longer considers the drive to be in a critical low space state. Outlook and Windows Update now have sufficient free space to operate normally.
 
 ---
 
