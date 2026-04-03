@@ -33,7 +33,7 @@ Slow boot complaints are among the most frequently raised tickets in any managed
 | **Client OS** | Windows 11 |
 | **Primary Tool** | Task Manager → Startup Apps tab |
 | **Log Tool** | Event Viewer → Windows Logs → Application |
-| **Key Event** | Event ID 4096 - VBScriptDeprecationAlert — Source: VBScriptDeprecationAlert |
+| **Key Event** | Event ID 4096 - VBScriptDeprecationAlert - Source: VBScriptDeprecationAlert |
 | **Identified Process** | BlueStacksServices.exe (106 child processes) |
 | **Computer Name** | Shark007 |
 
