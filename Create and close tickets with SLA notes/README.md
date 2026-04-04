@@ -1,10 +1,10 @@
-# Lab 17: Create and Close Tickets with SLA Notes
+#Create and Close Tickets with SLA Notes
 
 > **Author:** Nnamso Mkpong
 >
-> **Domain:** IT Service Desk — Ticket Management and SLA Documentation
+> **Domain:** IT Service Desk - Ticket Management and SLA Documentation
 >
-> **Environment:** Markdown Based Ticket Log — simulating a service desk morning intake session
+> **Environment:** Ticket Log - simulating a service desk morning intake session
 >
 > **Completed:** April 2026
 
@@ -12,17 +12,17 @@
 
 ## Objective
 
-Simulate a real service desk ticket workflow from intake to closure. Create five mock tickets covering common request types, assign correct categorisation, priority, impact, urgency, and SLA class to each one, write structured investigation and action notes for one ticket through its full lifecycle, and demonstrate the documentation standards required for SLA compliance and team handover quality.
+Simulate a real service desk ticket workflow from intake to closure. Create five mock tickets covering common request types, assign correct categorisation, priority, impact, urgency and SLA class to each one, write structured investigation and action notes for one ticket through its full lifecycle and demonstrate the documentation standards required for SLA compliance and team handover quality.
 
 ---
 
 ## Business Scenario
 
-> **Service Desk Morning Rush — April 7, 2026 | 08:00 onwards**
+> **Service Desk Morning Rush - April 7, 2026 | 08:00 onwards**
 >
-> You are the service desk analyst on first shift. Between 08:00 and 09:30 five requests arrive across email, the self-service portal, and a phone call. You must log each ticket correctly, assign the right priority so the SLA clock starts accurately, and manage the queue so that the highest business impact issues receive first attention. One ticket must be escalated, one is awaiting user response, and one must be worked through to full closure with complete notes.
+> You are the service desk analyst on first shift. Between 08:00 and 09:30 five requests arrive across email, the self-service portal, and a phone call. You must log each ticket correctly, assign the right priority so the SLA clock starts accurately and manage the queue so that the highest business impact issues receive first attention. One ticket must be escalated, one is awaiting user response and one must be worked through to full closure with complete notes.
 
-This scenario reflects what a first-line support analyst faces every morning in any organisation running a formal ITIL-aligned service desk. The ability to log tickets correctly, assign the right priority without over or under-escalating, write notes that a colleague can pick up without a briefing, and close tickets with evidence of resolution is a baseline competency for any help desk or IT support role.
+This scenario reflects what a first-line support analyst faces every morning in any organisation running a formal ITIL-aligned service desk. The ability to log tickets correctly, assign the right priority without over or under-escalating, write notes that a colleague can pick up without a briefing and close tickets with evidence of resolution is a baseline competency for any help desk or IT support role.
 
 ---
 
@@ -31,7 +31,7 @@ This scenario reflects what a first-line support analyst faces every morning in 
 | Component | Detail |
 |---|---|
 | **Ticket Log Format** | Markdown based structured log |
-| **SLA Framework** | Four priority tiers: P1 Critical, P2 High, P3 Medium, P4 Low |
+| **SLA Framework** | 4 priority tiers: P1 Critical, P2 High, P3 Medium, P4 Low |
 | **Categories Used** | Access Management, Hardware, Microsoft 365, Identity Management, Network and Connectivity |
 | **Ticket Count** | Five tickets logged in this session |
 | **Full Lifecycle Ticket** | TKT-0083 — Outlook PST Corruption and Send Receive Failure |
@@ -40,7 +40,7 @@ This scenario reflects what a first-line support analyst faces every morning in 
 
 ---
 
-## SLA Priority Framework — Key Concept
+## SLA Priority Framework - Key Concept
 
 > **Assigning the wrong priority at intake is the single most common SLA failure in a service desk. Understanding the impact and urgency matrix prevents it.**
 
@@ -65,7 +65,7 @@ ROUTINE         P4 LOW
 no urgency)     Resolve: 72 hours
 ```
 
-Impact measures how many people or how much of the business is affected. Urgency measures how quickly the problem needs to be resolved before the impact gets worse. A P1 is not simply the loudest user — it is a confirmed high impact and high urgency combination. Every other ticket in the queue that is assigned P1 incorrectly steals response time from a real P1 and causes actual SLA breaches.
+Impact measures how many people or how much of the business is affected. Urgency measures how quickly the problem needs to be resolved before the impact gets worse. A P1 is not simply the loudest user as it is a confirmed high impact and high urgency combination. Every other ticket in the queue that is assigned P1 incorrectly steals response time from a real P1 and causes actual SLA breaches.
 
 ---
 
@@ -75,11 +75,11 @@ The following five tickets were logged between 08:00 and 09:30 on April 7, 2026.
 
 | Ticket ID | Summary | Category | Priority | Impact | Urgency | Status | SLA Response | SLA Resolve |
 |---|---|---|---|---|---|---|---|---|
-| TKT-0081 | Password reset — user locked out | Access Management | P2 High | Single user, no workaround | High | Resolved | 1 hour | 8 hours |
-| TKT-0082 | Printer offline — finance dept | Hardware | P2 High | Team of 8, partial workaround | High | Resolved | 1 hour | 8 hours |
+| TKT-0081 | Password reset - user locked out | Access Management | P2 High | Single user, no workaround | High | Resolved | 1 hour | 8 hours |
+| TKT-0082 | Printer offline  finance dept | Hardware | P2 High | Team of 8, partial workaround | High | Resolved | 1 hour | 8 hours |
 | TKT-0083 | Outlook PST corruption, send receive failing | Microsoft 365 | P2 High | Single user, no email workaround | High | **Closed** | 1 hour | 8 hours |
-| TKT-0084 | New user account setup — starts Monday | Identity Management | P3 Medium | Planned work, no current impact | Low | **Awaiting User** | 4 hours | 24 hours |
-| TKT-0085 | VPN authentication loop — remote user | Network and Connectivity | P2 High | Single remote user, completely blocked | High | **Escalated** | 1 hour | 8 hours |
+| TKT-0084 | New user account setup - starts Monday | Identity Management | P3 Medium | Planned work, no current impact | Low | **Awaiting User** | 4 hours | 24 hours |
+| TKT-0085 | VPN authentication loop - remote user | Network and Connectivity | P2 High | Single remote user, completely blocked | High | **Escalated** | 1 hour | 8 hours |
 
 ---
 
