@@ -34,9 +34,9 @@ This scenario reflects what a first-line support analyst faces every morning in 
 | **SLA Framework** | 4 priority tiers: P1 Critical, P2 High, P3 Medium, P4 Low |
 | **Categories Used** | Access Management, Hardware, Microsoft 365, Identity Management, Network and Connectivity |
 | **Ticket Count** | Five tickets logged in this session |
-| **Full Lifecycle Ticket** | TKT-0083 — Outlook PST Corruption and Send Receive Failure |
-| **Escalated Ticket** | TKT-0085 — VPN Authentication Loop |
-| **Awaiting User Response** | TKT-0084 — New User Account Setup |
+| **Full Lifecycle Ticket** | TKT-0083 - Outlook PST Corruption and Send Receive Failure |
+| **Escalated Ticket** | TKT-0085 - VPN Authentication Loop |
+| **Awaiting User Response** | TKT-0084 - New User Account Setup |
 
 ---
 
@@ -95,7 +95,7 @@ The following five tickets were logged between 08:00 and 09:30 on April 7, 2026.
 
 **Request summary:** User locked out of Windows account after three failed login attempts. Cannot access any systems. No workaround available as SSO is tied to the Windows account.
 
-**Action taken:** Identity confirmed via employee ID and manager callback. Account unlocked via Active Directory Users and Computers. Temporary password issued using organisation password policy. User instructed to change password on next login. Advised on account lockout policy — three failed attempts triggers a 30 minute lockout.
+**Action taken:** Identity confirmed via employee ID and manager callback. Account unlocked via Active Directory Users and Computers. Temporary password issued using organisation password policy. User instructed to change password on next login. Advised on account lockout policy - three failed attempts triggers a 30 minute lockout.
 
 **Resolution:** Account unlocked and user confirmed successful login at 08:19. Total handling time: 15 minutes.
 
@@ -111,7 +111,7 @@ The following five tickets were logged between 08:00 and 09:30 on April 7, 2026.
 
 **Request summary:** Network printer on the second floor (HP LaserJet — IP 192.168.1.45) is showing offline to all eight finance team members. Month-end reporting is this week and the team uses the printer for sign-off documents. Partial workaround available: users can save as PDF and email for signature, but this adds significant process overhead.
 
-**Action taken:** Checked printer status via print server — printer was showing as offline in the Windows print queue. Physically checked the device. Found the printer had lost its network lease — the IP address had been reassigned by DHCP following a router restart over the weekend. Assigned a static IP to the printer at the print server. Cleared all stuck jobs from the queue. Confirmed test page printed successfully. Informed the network team of the DHCP lease reassignment issue and recommended a static IP reservation for all shared printers.
+**Action taken:** Checked printer status via print server - printer was showing as offline in the Windows print queue. Physically checked the device. Found the printer had lost its network lease — the IP address had been reassigned by DHCP following a router restart over the weekend. Assigned a static IP to the printer at the print server. Cleared all stuck jobs from the queue. Confirmed test page printed successfully. Informed the network team of the DHCP lease reassignment issue and recommended a static IP reservation for all shared printers.
 
 **Resolution:** Printer online and printing at 09:10. All eight users confirmed printer accessible. Total handling time: 39 minutes.
 
@@ -135,11 +135,11 @@ Full investigation notes, first response, action log, escalation assessment, use
 
 **Opened:** 09:05 | **Priority:** P3 Medium | **Status:** Awaiting User Response
 
-**Reported by:** HR Portal — automated submission | **Requestor:** HR Department | **New starter:** Chiamaka Bello | **Start date:** Monday April 14, 2026
+**Reported by:** HR Portal - automated submission | **Requestor:** HR Department | **New starter:** Chiamaka Bello | **Start date:** Monday April 14, 2026
 
-**Request summary:** New employee starting Monday requires Windows account, email, Microsoft 365 licence, and access to the Legal shared drive. Start date is one week away. No current business impact — this is planned provisioning work.
+**Request summary:** New employee starting Monday requires Windows account, email, Microsoft 365 licence, and access to the Legal shared drive. Start date is one week away. No current business impact - this is planned provisioning work.
 
-**Action taken:** Ticket logged as P3 Medium — planned work with no current urgency. First response sent to HR at 09:22 requesting confirmation of the following: full legal name as it should appear in Active Directory, job title and department, line manager name and email, specific shared drives and applications required, and whether a laptop needs to be provisioned or if the user is bringing their own device.
+**Action taken:** Ticket logged as P3 Medium - planned work with no current urgency. First response sent to HR at 09:22 requesting confirmation of the following: full legal name as it should appear in Active Directory, job title and department, line manager name and email, specific shared drives and applications required, and whether a laptop needs to be provisioned or if the user is bringing their own device.
 
 **Current status:** Awaiting HR response. Ticket placed in Awaiting User state. SLA clock paused per policy while awaiting user-supplied information. SLA will resume when HR responds.
 
@@ -187,7 +187,7 @@ The first is continuity. When a ticket is handed over between shifts, escalated 
 
 The second is accountability. In a managed service environment, SLA performance is measured and reported. When a breach occurs, the ticket log is the primary evidence for a post-incident review. Clear timestamps on every action show exactly when the ticket was received, when the first response went out, when each diagnostic step was taken, and when the issue was resolved. Gaps in the timestamp record make SLA defence impossible and expose the analyst and the team to unfair criticism.
 
-The third is pattern recognition. Individual tickets tell individual stories. Aggregated ticket notes tell operational stories. A service desk manager reviewing a week of ticket logs should be able to identify recurring failure categories, frequently affected users, applications generating repeated incidents, and hardware reaching end of life — purely from reading structured ticket notes. Unstructured notes ("fixed the thing, user happy") contribute nothing to this operational intelligence.
+The third is pattern recognition. Individual tickets tell individual stories. Aggregated ticket notes tell operational stories. A service desk manager reviewing a week of ticket logs should be able to identify recurring failure categories, frequently affected users, applications generating repeated incidents, and hardware reaching end of life - purely from reading structured ticket notes. Unstructured notes ("fixed the thing, user happy") contribute nothing to this operational intelligence.
 
 ---
 
@@ -228,7 +228,7 @@ The third is pattern recognition. Individual tickets tell individual stories. Ag
 
 3. **Awaiting User is a legitimate ticket state, not an excuse.** When a ticket genuinely requires information from the user before work can continue, placing it in Awaiting User and pausing the SLA clock is correct procedure. However, the ticket still requires a chase mechanism and a handover note so it does not sit forgotten until the user calls back frustrated.
 
-4. **Escalation is a documented decision, not an admission of failure.** A well-documented escalation shows that first-line steps were completed correctly, that the technician recognised the boundary of their scope, and that the receiving team has everything they need to continue. An escalation with no notes is the real failure — it forces the L2 team to start from scratch and wastes the work already done.
+4. **Escalation is a documented decision, not an admission of failure.** A well-documented escalation shows that first-line steps were completed correctly, that the technician recognised the boundary of their scope, and that the receiving team has everything they need to continue. An escalation with no notes is the real failure - it forces the L2 team to start from scratch and wastes the work already done.
 
 5. **Closure notes are the most commonly skipped and most professionally damaging part of ticket hygiene.** Closing a ticket with no resolution note means the next ticket for the same user or the same device has no history to reference. Closure notes should always record what the root cause was, what the fix was, and whether the user confirmed the issue was resolved.
 
