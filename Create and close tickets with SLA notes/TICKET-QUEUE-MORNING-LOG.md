@@ -5,7 +5,7 @@
 **Session Period:** 08:00 to 11:30
 **Total Tickets Logged:** 5
 **Tickets Resolved This Session:** 2 (TKT-0081, TKT-0082)
-**Tickets Closed This Session:** 1 (TKT-0083 — full lifecycle)
+**Tickets Closed This Session:** 1 (TKT-0083 - full lifecycle)
 **Tickets Awaiting User:** 1 (TKT-0084)
 **Tickets Escalated:** 1 (TKT-0085)
 
