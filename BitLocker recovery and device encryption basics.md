@@ -43,7 +43,7 @@ BitLocker recovery events are among the most urgent and sensitive tickets a help
 | **Recovery Key Storage** | VMware Shared Folder Z: (lab simulation - see enterprise note below) |
 | **Drive Encrypted** | Local Disk C: - operating system drive |
 | **Enterprise Key Storage** | Azure Active Directory or on-premises Active Directory (not used in this lab VM) |
-| **Test Scope** | Test VM only — no production machine or real user data involved |
+| **Test Scope** | Test VM only (no production machine or real user data involved) |
 
 ---
 
