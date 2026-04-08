@@ -37,7 +37,7 @@ Both workflows are documented with evidence at every step because in a regulated
 | **User Account** | maria.shima@[domain] |
 | **Department Group** | Finance_Department (Global, Security) |
 | **Software Installed** | Microsoft Teams, WPS Office, Google Chrome, Microsoft 365 |
-| **Shared Drive** | \\[dc_ip]\Finance_Share — mapped as X: |
+| **Shared Drive** | \\[dc_ip]\Finance_Share - mapped as X: |
 | **Email Workflow** | Microsoft 365 licence assignment (documented workflow) |
 
 ---
@@ -358,13 +358,13 @@ Before the device is wiped and redeployed, complete a physical hardware checklis
 
 ## Business Impact Note
 
-> **Onboarding and offboarding are the two workflows where IT support has the highest direct impact on business security and operational continuity — and where mistakes are the most costly.**
+> **Onboarding and offboarding are the two workflows where IT support has the highest direct impact on business security and operational continuity and where mistakes are the most costly.**
 
-An incomplete onboarding means a new employee cannot start work on their first day. They cannot log in, access their email, find their team's shared files, or use the tools they need. The cost is not just the new employee's lost productivity - it is the management time spent chasing IT, the poor first impression of the organisation, and the risk of the user finding workarounds that bypass security controls.
+An incomplete onboarding means a new employee cannot start work on their first day. They cannot log in, access their email, find their team's shared files, or use the tools they need. The cost is not just the new employee's lost productivity. It is the management time spent chasing IT, the poor first impression of the organisation, and the risk of the user finding workarounds that bypass security controls.
 
-An incomplete offboarding is a security incident waiting to happen. A departing employee whose account is still active, group memberships are still in place, and password is unchanged retains full access to company data until someone notices. In a regulated environment, this is not just a policy violation - it is a reportable compliance event. A clear offboarding checklist completed on the last day of employment with evidence at every step is the minimum standard for any managed IT environment.
+An incomplete offboarding is a security incident waiting to happen. A departing employee whose account is still active, group memberships are still in place, and password is unchanged retains full access to company data until someone notices. In a regulated environment, this is not just a policy violation. it is a reportable compliance event. A clear offboarding checklist completed on the last day of employment with evidence at every step is the minimum standard for any managed IT environment.
 
-The combination of both workflows in a single lab demonstrates that the technician understands the full user lifecycle — not just the technical steps, but the security reasoning behind the order of those steps and the documentation required to prove they were completed.
+The combination of both workflows in a single lab demonstrates that the technician understands the full user lifecycle not just the technical steps, but the security reasoning behind the order of those steps and the documentation required to prove they were completed.
 
 ---
 
@@ -379,10 +379,10 @@ See `TICKET-0094-onboarding-maria-shima.md` and `TICKET-0099-offboarding-maria-s
 | Check | Result |
 |---|---|
 | Onboarding ticket received and all fields confirmed | Pass |
-| AD user account created: maria.shima@mylab.local | Pass |
+| AD user account created: maria.shima@[domain] | Pass |
 | Finance_Department security group created (Global, Security) | Pass |
 | Maria Shima added to Finance_Department and Domain Users | Pass |
-| WIN11_CLIENT01 joined to mylab.local domain | Pass |
+| WIN11_CLIENT01 joined to [domain] domain | Pass |
 | Device visible in ADUC Computers container | Pass |
 | Email provisioning workflow documented | Pass |
 | Microsoft Teams, WPS Office, Google Chrome, Microsoft 365 installed | Pass |
@@ -390,10 +390,10 @@ See `TICKET-0094-onboarding-maria-shima.md` and `TICKET-0099-offboarding-maria-s
 | Finance_Share mapped as X: on WIN11_CLIENT01 | Pass |
 | Day One handover note produced and confirmed complete | Pass |
 | Offboarding ticket received with manager authorisation | Pass |
-| Maria Shima AD account disabled — confirmation dialog confirmed | Pass |
+| Maria Shima AD account disabled - confirmation dialog confirmed | Pass |
 | Maria Shima removed from Finance_Department group | Pass |
 | Password reset with must change at next logon enabled | Pass |
-| Device collection checklist completed — all items accounted for | Pass |
+| Device collection checklist completed - all items accounted for | Pass |
 | Data wipe scheduled — device ready for reimaging | Pass |
 
 ---
@@ -430,6 +430,6 @@ In managed service environments, this type of structured onboarding and offboard
 | Domain join fails during device setup | Confirm DNS on the client points to the domain controller, not a public DNS server | Attempting to join domain with public DNS (8.8.8.8) configured |
 | User cannot access Finance_Share | Confirm Finance_Department group membership and NTFS permissions on the share | Checking only the share permissions, ignoring NTFS permissions |
 | Offboarding request missing manager authorisation | Return the ticket to the requestor — do not disable the account without confirmed authorisation | Disabling account based on verbal instruction without written authorisation |
-| Account disabled but user still has active sessions | Force sign-out via Active Directory or M365 admin centre — disabling AD blocks new logins but does not terminate active sessions | Assuming account disable ends all active sessions immediately |
-| Device not visible in ADUC after domain join | Confirm the domain join completed and a restart occurred — computers appear in ADUC after first reboot | Looking in ADUC before the client machine has rebooted |
+| Account disabled but user still has active sessions | Force sign-out via Active Directory or M365 admin centre - disabling AD blocks new logins but does not terminate active sessions | Assuming account disable ends all active sessions immediately |
+| Device not visible in ADUC after domain join | Confirm the domain join completed and a restart occurred - computers appear in ADUC after first reboot | Looking in ADUC before the client machine has rebooted |
 | Shared drive not accessible after mapping | Confirm group membership is active and NTFS permissions include the security group — mapping a drive without correct permissions shows the drive but denies access | Mapping the drive letter correctly but assigning permissions to the individual user instead of the group |
