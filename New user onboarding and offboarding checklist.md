@@ -265,7 +265,8 @@ On the file server, navigate to the Finance_Share folder properties and confirm 
 
 On WIN11_CLIENT01, map the Finance_Share as a persistent network drive. The drive is mapped to X: from \\[dc_ip]\Finance_Share.
 
-<img width="783" height="546" alt="15 NETWORK MAPPING" src="https://github.com/user-attachments/assets/ca2905f1-87ac-4da5-9f8f-0ac024f5761c" />
+<img width="783" height="546" alt="15 NETWORK MAPPING" src="https://github.com/user-attachments/assets/a718a23e-1c12-41a8-98fa-0d0f56b6f6eb" />
+
 
 
 > **Highlighted:** Finance_Share (\\[dc_ip]) is visible in File Explorer under Network Locations, mapped as drive X: with 42.6 GB free of 59.3 GB. The drive is accessible from the client machine. Maria Shima's Finance_Department group membership grants her access to this share automatically.
