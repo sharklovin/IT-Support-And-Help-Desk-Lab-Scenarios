@@ -11,18 +11,6 @@ This is my personal IT support lab portfolio. Each lab was built and documented 
 The repository contains 15 labs covering the skills that appear most consistently in IT support and Help desk job descriptions. Every lab folder holds three things: the full written walkthrough in README.md, a ticket note written in business style, and a screenshots folder with annotated evidence from the actual lab session.
 
 ---
-
-## Lab Environment
-
-| Component | Detail |
-|---|---|
-| Client OS | Windows 11 |
-| Server OS | Windows Server 2022 Evaluation |
-| Domain | [domain] |
-| Virtualisation | VMware Workstation |
-| Cloud | Microsoft 365 Developer Tenant |
-
----
 ## License
 
 © 2026 Nnamso Mkpong. All rights reserved.
